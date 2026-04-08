@@ -1,6 +1,7 @@
 [build]
   command = "npm run build"
-  publish = ".next"
+  publish = ".netlify/output/public"
+  functions = ".netlify/functions"
 
 [build.environment]
   NODE_VERSION = "18"
@@ -9,12 +10,3 @@
 # NEXT_PUBLIC_* variables for client-side
 # Server-side variables for API routes
 
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200

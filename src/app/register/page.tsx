@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { RegistrationTypeToggle } from '@/components/RegistrationTypeToggle';
 import { IndividualForm } from '@/components/IndividualForm';
 import { TeamForm } from '@/components/TeamForm';
@@ -12,6 +13,24 @@ import { IndividualFormData, TeamFormData } from '@/types';
 import { individualFormSchema, teamFormSchema } from '@/lib/validation/schemas';
 
 type RegistrationStep = 'type' | 'form' | 'payment' | 'success' | 'error';
+
+const registrationPhotos = [
+  {
+    src: 'https://www.fortworthgolf.org/media/widgetkit/rockwood-park_3-af0227a75d1b128374c831ccf5126f75.jpg',
+    alt: 'Lush Rockwood Park greens',
+    caption: 'Tournament-ready greens',
+  },
+  {
+    src: 'https://www.fortworthgolf.org/media/widgetkit/rockwood-park_1-3ac51550fc0be35bf3991c34d54ac18b.jpg',
+    alt: 'Rockwood Park fairway views',
+    caption: 'Signature fairway vistas',
+  },
+  {
+    src: 'https://www.fortworthgolf.org/media/widgetkit/rockwood-park_4-02bfde1de46c48d52967485d3e836cf6.jpg',
+    alt: 'Scenic course hole',
+    caption: 'Scenic course holes',
+  },
+];
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -195,44 +214,91 @@ export default function RegisterPage() {
       case 'type':
         return (
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">Register for the Tournament</h1>
-              <p className="text-gray-600">Choose your registration type to get started</p>
+            <div className="overflow-hidden rounded-[2rem] bg-gradient-to-r from-primary-600 via-secondary-600 to-navy p-10 shadow-2xl ring-1 ring-white/20 text-white mb-10">
+              <p className="uppercase tracking-[0.25em] text-sm text-primary-200 mb-4">
+                Rockwood Park Golf Tournament
+              </p>
+              <h1 className="text-4xl sm:text-5xl font-semibold mb-4">Register for the Tournament</h1>
+              <p className="text-lg text-primary-100 max-w-3xl mb-8">
+                Join us Saturday, June 20, 2026 at Rockwood Park Golf Course for a memorable day of golf, BBQ, prizes, and community support.
+              </p>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="rounded-3xl bg-white/10 p-6 backdrop-blur-sm border border-white/10">
+                  <p className="text-sm uppercase tracking-[0.2em] text-primary-200 mb-2">Format</p>
+                  <p className="font-semibold text-xl">Shotgun Start</p>
+                  <p className="mt-2 text-primary-100">7:00 AM Registration • 8:00 AM Tee Time</p>
+                </div>
+                <div className="rounded-3xl bg-white/10 p-6 backdrop-blur-sm border border-white/10">
+                  <p className="text-sm uppercase tracking-[0.2em] text-primary-200 mb-2">Lunch</p>
+                  <p className="font-semibold text-xl">BBQ Lunch Included</p>
+                  <p className="mt-2 text-primary-100">Chicken or sausage, potato salad, baked beans, and iced tea.</p>
+                </div>
+              </div>
             </div>
 
-            <RegistrationTypeToggle
-              selectedType={registrationType}
-              onTypeChange={handleTypeChange}
-            />
+            <div className="rounded-[2rem] bg-white p-8 shadow-2xl ring-1 ring-slate-200">
+              <RegistrationTypeToggle
+                selectedType={registrationType}
+                onTypeChange={handleTypeChange}
+              />
 
-            <div className="text-center">
-              <button
-                onClick={() => setCurrentStep('form')}
-                className="px-6 py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700"
-              >
-                Continue to Registration
-              </button>
+              <div className="mt-8 text-center">
+                <button
+                  onClick={() => setCurrentStep('form')}
+                  className="inline-flex items-center justify-center rounded-full bg-primary-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-primary-500/20 transition hover:bg-primary-700"
+                >
+                  Continue to Registration
+                </button>
+              </div>
             </div>
           </div>
         );
 
       case 'form':
         return (
-          <div className="max-w-4xl mx-auto">
-            <div className="mb-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="mb-8 flex items-center justify-between rounded-3xl bg-gradient-to-r from-primary-600 via-secondary-600 to-navy p-8 text-white shadow-2xl ring-1 ring-white/10">
+              <div>
+                <p className="text-sm uppercase tracking-[0.3em] text-primary-200 mb-2">Ready to register?</p>
+                <h2 className="text-3xl font-semibold mb-2">Complete your entry</h2>
+                <p className="text-primary-100 max-w-2xl">
+                  Fill out the form and continue to payment. The course photos and event details are here to keep the experience premium.
+                </p>
+              </div>
               <button
                 onClick={() => setCurrentStep('type')}
-                className="text-primary-600 hover:text-primary-700 font-medium"
+                className="rounded-full bg-white/10 px-5 py-3 text-sm font-semibold text-white ring-1 ring-white/20 hover:bg-white/20"
               >
-                ← Back to registration type
+                ← Change registration type
               </button>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <div className="lg:col-span-2">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
+              <div className="xl:col-span-3 space-y-6">
+                {registrationPhotos.slice(0, 2).map((photo, idx) => (
+                  <div key={photo.src} className="overflow-hidden rounded-[2rem] shadow-2xl ring-1 ring-slate-200 bg-white">
+                    <Image src={photo.src} alt={photo.alt} width={400} height={288} className="h-72 w-full object-cover" />
+                    <div className="p-4 bg-gradient-to-t from-slate-950/80 to-transparent text-white">
+                      <p className="text-sm font-semibold">{photo.caption}</p>
+                    </div>
+                  </div>
+                ))}
+
+                <div className="rounded-[2rem] bg-primary-50 p-6 shadow-2xl ring-1 ring-primary-100">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Tournament Highlights</h3>
+                  <ul className="space-y-3 text-gray-700">
+                    <li>• 18 holes shotgun start</li>
+                    <li>• BBQ lunch included</li>
+                    <li>• Team and individual options</li>
+                    <li>• Charity prizes and awards</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="xl:col-span-6 rounded-[2rem] bg-white p-8 shadow-2xl ring-1 ring-slate-200">
+                <h3 className="text-3xl font-bold text-gray-900 mb-6">
                   {registrationType === 'individual' ? 'Individual Registration' : 'Team Registration'}
-                </h2>
+                </h3>
 
                 {registrationType === 'individual' ? (
                   <IndividualForm
@@ -250,26 +316,32 @@ export default function RegisterPage() {
                   />
                 )}
 
-                <div className="mt-8 flex justify-between">
+                <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-between">
                   <button
                     onClick={() => setCurrentStep('type')}
-                    className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300"
+                    className="px-6 py-3 rounded-full bg-slate-100 text-slate-900 font-medium hover:bg-slate-200"
                   >
                     Back
                   </button>
                   <button
                     onClick={handleFormSubmit}
                     disabled={isSubmitting}
-                    className="px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50"
+                    className="px-6 py-3 rounded-full bg-primary-600 text-white font-semibold hover:bg-primary-700 disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {isSubmitting ? 'Submitting...' : 'Continue to Payment'}
                   </button>
                 </div>
               </div>
 
-              <div className="space-y-6">
-                <EventDetailsCard />
-                <PricingCard />
+              <div className="xl:col-span-3 space-y-6">
+                <div className="overflow-hidden rounded-[2rem] shadow-2xl ring-1 ring-slate-200 bg-white">
+                  <Image src={registrationPhotos[2].src} alt={registrationPhotos[2].alt} width={400} height={320} className="h-80 w-full object-cover" />
+                  <div className="p-4 bg-gradient-to-t from-slate-950/80 to-transparent text-white">
+                    <p className="text-sm font-semibold">{registrationPhotos[2].caption}</p>
+                  </div>
+                </div>
+                <EventDetailsCard className="bg-gradient-to-br from-primary-50 to-secondary-50 border border-primary-100" />
+                <PricingCard className="bg-gradient-to-br from-secondary-50 to-primary-50 border border-secondary-100" />
               </div>
             </div>
           </div>
@@ -374,7 +446,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-secondary-50 via-white to-primary-50 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {renderStepContent()}
       </div>

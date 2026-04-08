@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { registrationStatusSchema } from '@/lib/validation/schemas';
@@ -9,9 +11,8 @@ export async function GET(request: NextRequest) {
     // Validate configuration
     validateConfig();
 
-    // Get submission_id from query params
-    const { searchParams } = new URL(request.url);
-    const submissionId = searchParams.get('submission_id');
+    // Get submission_id from query params using NextRequest API
+    const submissionId = request.nextUrl.searchParams.get('submission_id');
 
     if (!submissionId) {
       return NextResponse.json(

@@ -15,6 +15,15 @@ export function PaymentStep({ submissionId, amount, onSuccess, onError }: Paymen
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const parseJsonResponse = async (response: Response) => {
+    const contentType = response.headers.get('content-type') || '';
+    if (contentType.includes('application/json')) {
+      return response.json();
+    }
+    const text = await response.text();
+    throw new Error(text || 'Unexpected non-JSON response from payment API');
+  };
+
   // Fetch link token on mount
   useEffect(() => {
     const fetchLinkToken = async () => {
@@ -27,7 +36,7 @@ export function PaymentStep({ submissionId, amount, onSuccess, onError }: Paymen
           body: JSON.stringify({ submission_id: submissionId }),
         });
 
-        const data = await response.json();
+        const data = await parseJsonResponse(response);
 
         if (!response.ok) {
           throw new Error(data.error || 'Failed to create payment link');
@@ -63,7 +72,7 @@ export function PaymentStep({ submissionId, amount, onSuccess, onError }: Paymen
           }),
         });
 
-        const data = await response.json();
+        const data = await parseJsonResponse(response);
 
         if (!response.ok) {
           throw new Error(data.error || 'Payment failed');

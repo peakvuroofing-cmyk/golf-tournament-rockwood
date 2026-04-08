@@ -70,9 +70,11 @@ export function PhotoGallery() {
             onClick={() => openModal(index)}
             className="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow"
           >
-            <img
+            <Image
               src={photo.src}
               alt={photo.alt}
+              width={400}
+              height={256}
               className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-end">
@@ -102,12 +104,15 @@ export function PhotoGallery() {
           </button>
 
           <div className="max-w-4xl w-full">
-            <img
+            <Image
               src={ROCKWOOD_PHOTOS[selectedIndex].src}
               alt={ROCKWOOD_PHOTOS[selectedIndex].alt}
+              width={800}
+              height={600}
               className="w-full h-auto rounded-lg"
             />
-            <p className="text-white text-center mt-4 font-semibold">\n              {ROCKWOOD_PHOTOS[selectedIndex].title}
+            <p className="text-white text-center mt-4 font-semibold">
+              {ROCKWOOD_PHOTOS[selectedIndex].title}
             </p>
           </div>
 
