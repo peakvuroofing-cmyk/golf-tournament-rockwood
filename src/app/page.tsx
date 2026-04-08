@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { MapPin, Clock, Users } from 'lucide-react';
+import { PhotoGallery } from '@/components/PhotoGallery';
 
 export default function HomePage() {
   return (
@@ -75,6 +76,36 @@ export default function HomePage() {
                   </li>
                 </ul>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Photo Gallery Section */}
+      <div className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-4xl font-bold text-center text-gray-900 mb-12 font-serif">
+            Rockwood Park Golf Course
+          </h2>
+          <PhotoGallery />
+        </div>
+      </div>
+
+      {/* Course Information */}
+      <div className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-r from-secondary-50 to-primary-50 rounded-lg p-12">
+            <h2 className="text-4xl font-bold text-secondary-900 mb-6 font-serif">About Rockwood Park</h2>
+            <div className="prose prose-lg max-w-none text-gray-700">
+              <p className="mb-4">
+                The original Rockwood Park Golf Course was opened for play in 1938 and was designed by Golf Course Architect John Bredemus. In November 2015, the course underwent a comprehensive $5.1 Million renovation led by the design team of John Colligan and associate Trey Kemp.
+              </p>
+              <p className="mb-4">
+                The renovation included a new routing plan with new greens, tees, fairways, bunkering system, and drainage. The course was lengthened to play up to 7,053 yards with four sets of tees ranging from 5,400 to 7,100 yards, playing to a Par 72.
+              </p>
+              <p>
+                For more information, call the pro shop at <span className="font-semibold text-primary-600">(817) 392-6560</span> or visit us at 1851 Jacksboro Hwy, Fort Worth, TX 76114.
+              </p>
             </div>
           </div>
         </div>
