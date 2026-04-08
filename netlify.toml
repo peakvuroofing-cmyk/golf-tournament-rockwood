@@ -6,6 +6,9 @@
 [build.environment]
   NODE_VERSION = "18"
 
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
 # Environment variables will be set in Netlify dashboard
 # NEXT_PUBLIC_* variables for client-side
 # Server-side variables for API routes
