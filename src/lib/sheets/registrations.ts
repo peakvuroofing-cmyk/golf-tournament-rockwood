@@ -125,8 +125,6 @@ export async function getRegistrationById(submissionId: string): Promise<Registr
     notes: rowData[33] || undefined,
     terms_accepted: rowData[34] === 'true',
     source_page: rowData[35],
-    plaid_customer_reference: rowData[36] || undefined,
-    plaid_transfer_id: rowData[37] || undefined,
-    plaid_payment_status_raw: rowData[38] || undefined,
+    stripe_session_id: rowData[36] || undefined,
   };
 }
