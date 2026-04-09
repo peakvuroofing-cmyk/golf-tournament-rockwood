@@ -6,8 +6,23 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const ROCKWOOD_PHOTOS = [
   {
+    src: '/rockwood-birds-eye.jpg',
+    alt: 'Bird\'s eye view of Rockwood Park Golf Course with Fort Worth skyline',
+    title: 'Bird\'s Eye View',
+  },
+  {
+    src: '/rockwood-aerial.jpg',
+    alt: 'Aerial view of Rockwood Park Golf Course and Fort Worth skyline',
+    title: 'Fort Worth Skyline',
+  },
+  {
+    src: '/rockwood-green.webp',
+    alt: 'Rockwood Park Golf Course green with sand bunkers',
+    title: 'Championship Greens',
+  },
+  {
     src: 'https://www.fortworthgolf.org/media/widgetkit/rockwood-park_1-3ac51550fc0be35bf3991c34d54ac18b.jpg',
-    alt: 'Rockwood Park Golf Course fairway with Fort Worth skyline',
+    alt: 'Rockwood Park Golf Course fairway',
     title: 'Lush Fairways',
   },
   {
