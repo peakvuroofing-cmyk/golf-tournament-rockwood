@@ -2,19 +2,24 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/#about' },
-  { label: 'BBQ Menu', href: '/#bbq-menu' },
-  { label: 'Become a Sponsor', href: '/#sponsors' },
-  { label: 'Donate', href: '/#donate' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Home',             href: '/' },
+  { label: 'About',            href: '/about' },
+  { label: 'BBQ Menu',         href: '/bbq-menu' },
+  { label: 'Become a Sponsor', href: '/sponsors' },
+  { label: 'Donate',           href: '/donate' },
+  { label: 'Contact',          href: '/contact' },
 ];
 
 export function NavBar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname.startsWith(href);
 
   return (
     <header className="bg-gradient-to-r from-navy via-secondary-800 to-secondary-900 text-white shadow-lg relative z-50">
@@ -30,19 +35,27 @@ export function NavBar() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-primary-100 hover:text-white font-medium transition-colors text-sm whitespace-nowrap"
+                className={`px-3 py-2 rounded-lg font-medium transition-colors text-sm whitespace-nowrap ${
+                  isActive(link.href)
+                    ? 'bg-white/15 text-white'
+                    : 'text-primary-100 hover:text-white hover:bg-white/10'
+                }`}
               >
                 {link.label}
               </Link>
             ))}
             <Link
               href="/register"
-              className="px-5 py-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors text-sm whitespace-nowrap"
+              className={`ml-3 px-5 py-2 font-semibold rounded-lg transition-colors text-sm whitespace-nowrap ${
+                isActive('/register')
+                  ? 'bg-primary-700 text-white ring-2 ring-white/30'
+                  : 'bg-primary-600 hover:bg-primary-700 text-white'
+              }`}
             >
               Register
             </Link>
@@ -70,13 +83,17 @@ export function NavBar() {
       {/* Mobile dropdown */}
       {open && (
         <div className="lg:hidden bg-secondary-900 border-t border-secondary-700">
-          <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col space-y-3">
+          <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="text-primary-100 hover:text-white font-medium transition-colors py-2 border-b border-secondary-800 last:border-0"
+                className={`px-4 py-3 rounded-lg font-medium transition-colors ${
+                  isActive(link.href)
+                    ? 'bg-white/15 text-white'
+                    : 'text-primary-100 hover:text-white hover:bg-white/10'
+                }`}
               >
                 {link.label}
               </Link>

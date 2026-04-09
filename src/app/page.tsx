@@ -103,6 +103,71 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* Flyer Section */}
+      <div className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Flyer poster */}
+            <div className="flex justify-center">
+              <div className="relative">
+                <div className="absolute inset-0 bg-primary-200 rounded-3xl blur-2xl opacity-30 scale-105" />
+                <Image
+                  src="/flyer.jpg"
+                  alt="Rockwood Park Charity Golf Tournament 2026"
+                  width={460}
+                  height={640}
+                  className="relative rounded-3xl shadow-2xl ring-4 ring-primary-100 w-full max-w-sm lg:max-w-md"
+                />
+              </div>
+            </div>
+
+            {/* Action panel */}
+            <div className="space-y-6">
+              <div>
+                <p className="text-sm uppercase tracking-widest text-primary-600 font-semibold mb-2">Community Charity Event</p>
+                <h2 className="text-4xl font-bold text-gray-900 font-serif mb-4">Join Us on the Course</h2>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  Rockwood Park Golf Course is hosting its annual Charity Golf Tournament on <strong>Saturday, June 20, 2026</strong>. All proceeds support local Fort Worth charities and community programs.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { label: 'Date', value: 'June 20, 2026' },
+                  { label: 'Registration', value: '7:00 AM' },
+                  { label: 'Shotgun Start', value: '8:00 AM' },
+                  { label: 'Format', value: 'Shotgun Start' },
+                ].map((item) => (
+                  <div key={item.label} className="bg-primary-50 rounded-xl p-4 ring-1 ring-primary-100">
+                    <p className="text-xs uppercase tracking-wide text-primary-600 font-semibold mb-1">{item.label}</p>
+                    <p className="font-bold text-gray-900">{item.value}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/register"
+                  className="flex-1 text-center px-6 py-4 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-xl transition-colors shadow-lg text-lg"
+                >
+                  $135 — Individual
+                </Link>
+                <Link
+                  href="/register"
+                  className="flex-1 text-center px-6 py-4 bg-navy hover:bg-secondary-800 text-white font-bold rounded-xl transition-colors shadow-lg text-lg"
+                >
+                  $500 — Team of 4
+                </Link>
+              </div>
+
+              <p className="text-sm text-gray-500 text-center">
+                BBQ lunch included with all registrations · <Link href="/bbq-menu" className="text-primary-600 hover:underline">View menu →</Link>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Photo Gallery Section */}
       <div className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
