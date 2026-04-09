@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { MapPin, Clock, Users } from 'lucide-react';
 import { PhotoGallery } from '@/components/PhotoGallery';
 
@@ -214,17 +215,50 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <div className="bg-gradient-to-r from-secondary-700 to-secondary-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-4 font-serif">Ready to Tee Off?</h2>
-          <p className="text-xl text-secondary-100 mb-8 max-w-2xl mx-auto">
-            Limited spots available. Secure your registration today and join us for an unforgettable day of golf.
-          </p>
-          <Link
-            href="/register"
-            className="inline-block px-10 py-4 bg-primary-500 hover:bg-primary-600 text-white font-bold text-lg rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
-          >
-            REGISTER NOW
-          </Link>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-3 items-center gap-8">
+            {/* Left sponsor */}
+            <div className="flex justify-center">
+              <div className="bg-white rounded-xl p-4 shadow-lg">
+                <Image
+                  src="/sponsor-ktr-fences.jpg"
+                  alt="KTR Fences - Tournament Sponsor"
+                  width={160}
+                  height={160}
+                  className="object-contain rounded-lg"
+                />
+                <p className="text-center text-gray-600 text-xs mt-2 font-semibold">Tournament Sponsor</p>
+              </div>
+            </div>
+
+            {/* Center CTA */}
+            <div className="text-center">
+              <h2 className="text-4xl font-bold mb-4 font-serif">Ready to Tee Off?</h2>
+              <p className="text-xl text-secondary-100 mb-8 max-w-2xl mx-auto">
+                Limited spots available. Secure your registration today and join us for an unforgettable day of golf.
+              </p>
+              <Link
+                href="/register"
+                className="inline-block px-10 py-4 bg-primary-500 hover:bg-primary-600 text-white font-bold text-lg rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+              >
+                REGISTER NOW
+              </Link>
+            </div>
+
+            {/* Right sponsor */}
+            <div className="flex justify-center">
+              <div className="bg-white rounded-xl p-4 shadow-lg">
+                <Image
+                  src="/sponsor-peakvu.jpg"
+                  alt="PeakVu Property Services - Tournament Sponsor"
+                  width={160}
+                  height={160}
+                  className="object-contain rounded-lg"
+                />
+                <p className="text-center text-gray-600 text-xs mt-2 font-semibold">Tournament Sponsor</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
