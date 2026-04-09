@@ -3,12 +3,13 @@ import { z } from 'zod';
 import { exchangeTokenSchema } from '@/lib/validation/schemas';
 import { handlePaymentExchangeAndInitiate } from '@/lib/plaid/payment-service';
 import { getRegistrationById } from '@/lib/sheets/registrations';
-import { validateConfig } from '@/lib/config';
+import { validateGoogleConfig, validatePlaidConfig } from '@/lib/config';
 
 export async function POST(request: NextRequest) {
   try {
-    // Validate configuration
-    validateConfig();
+    // Validate configuration for Google Sheets and Plaid access
+    validateGoogleConfig();
+    validatePlaidConfig();
 
     // Parse and validate request body
     const body = await request.json();

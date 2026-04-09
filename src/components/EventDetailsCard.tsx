@@ -36,22 +36,22 @@ export function EventDetailsCard({ className = '' }: EventDetailsCardProps) {
 
         <div className="flex items-center text-gray-600">
           <MapPin className="h-5 w-5 mr-2 text-primary-600" />
-          <span>{process.env.NEXT_PUBLIC_VENUE_NAME}</span>
+          <span>{venueName}</span>
         </div>
 
         <div className="flex items-center text-gray-600">
           <MapPin className="h-5 w-5 mr-2 text-primary-600 ml-7" />
-          <span>{process.env.NEXT_PUBLIC_VENUE_ADDRESS}</span>
+          <span>{venueAddress}</span>
         </div>
 
         <div className="flex items-center text-gray-600">
           <Clock className="h-5 w-5 mr-2 text-primary-600" />
-          <span>Registration: {process.env.NEXT_PUBLIC_REGISTRATION_TIME}</span>
+          <span>Registration: {registrationTime}</span>
         </div>
 
         <div className="flex items-center text-gray-600">
           <Clock className="h-5 w-5 mr-2 text-primary-600 ml-7" />
-          <span>Shotgun Start: {process.env.NEXT_PUBLIC_SHOTGUN_START}</span>
+          <span>Shotgun Start: {shotgunStart}</span>
         </div>
       </div>
     </div>

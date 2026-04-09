@@ -5,12 +5,12 @@ import { normalizeIndividualData, normalizeTeamData } from '@/lib/utils/normaliz
 import { addRegistration, checkDuplicateEmail } from '@/lib/sheets/registrations';
 import { logRegistrationSubmission } from '@/lib/sheets/audit-log';
 import { sanitizeFormData } from '@/lib/utils/sanitize';
-import { validateConfig } from '@/lib/config';
+import { validateGoogleConfig } from '@/lib/config';
 
 export async function POST(request: NextRequest) {
   try {
-    // Validate configuration
-    validateConfig();
+    // Validate configuration for Google Sheets access
+    validateGoogleConfig();
 
     // Parse and validate request body
     const body = await request.json();

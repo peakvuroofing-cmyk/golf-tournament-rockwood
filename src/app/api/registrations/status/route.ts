@@ -4,12 +4,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { registrationStatusSchema } from '@/lib/validation/schemas';
 import { getRegistrationById } from '@/lib/sheets/registrations';
-import { validateConfig } from '@/lib/config';
+import { validateGoogleConfig } from '@/lib/config';
 
 export async function GET(request: NextRequest) {
   try {
-    // Validate configuration
-    validateConfig();
+    // Validate configuration for Google Sheets access
+    validateGoogleConfig();
 
     // Get submission_id from query params using NextRequest API
     const submissionId = request.nextUrl.searchParams.get('submission_id');

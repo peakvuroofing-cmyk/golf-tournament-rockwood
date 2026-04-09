@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 const ROCKWOOD_PHOTOS = [
   {
     src: 'https://www.fortworthgolf.org/media/widgetkit/rockwood-park_1-3ac51550fc0be35bf3991c34d54ac18b.jpg',
-    alt: 'Rockwood Park Golf Course fairway',
+    alt: 'Rockwood Park Golf Course fairway with Fort Worth skyline',
     title: 'Lush Fairways',
   },
   {
@@ -27,28 +27,8 @@ const ROCKWOOD_PHOTOS = [
   },
   {
     src: 'https://www.fortworthgolf.org/media/widgetkit/rockwood-park_5-459e2281f460e96528668fc1101ea055.jpg',
-    alt: 'Water feature at the golf course',
+    alt: 'Water feature at Rockwood Park Golf Course',
     title: 'Water Features',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Golf course sunset silhouette',
-    title: 'Sunset Fairway',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Players walking on a golf course',
-    title: 'Tournament Day',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Golf course with rolling hills',
-    title: 'Rolling Greens',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Golf course clubhouse and course view',
-    title: 'Clubhouse View',
   },
 ];
 
