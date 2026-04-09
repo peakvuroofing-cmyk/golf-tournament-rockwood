@@ -267,7 +267,7 @@ export default function HomePage() {
           <p className="text-sm uppercase tracking-widest text-slate-500 mb-3">Give Back</p>
           <h2 className="text-3xl font-bold text-gray-900 mb-4 font-serif">Donate to the Cause</h2>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Can't make it to the tournament? You can still make a difference. All donations go directly to supporting local charities and community programs in the Fort Worth area.
+            Can&apos;t make it to the tournament? You can still make a difference. All donations go directly to supporting local charities and community programs in the Fort Worth area.
           </p>
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8 text-left max-w-xl mx-auto">
             <h3 className="font-bold text-gray-900 mb-4">Your donation supports:</h3>
@@ -291,7 +291,7 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-sm uppercase tracking-widest text-slate-500 mb-3">Get in Touch</p>
           <h2 className="text-3xl font-bold text-gray-900 mb-4 font-serif">Contact Us</h2>
-          <p className="text-gray-600 mb-10">Questions about registration, sponsorship, or the event? We'd love to hear from you.</p>
+          <p className="text-gray-600 mb-10">Questions about registration, sponsorship, or the event? We&apos;d love to hear from you.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-gray-50 rounded-xl p-6 shadow">
               <div className="text-3xl mb-3">📍</div>
