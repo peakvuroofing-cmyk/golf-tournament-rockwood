@@ -121,8 +121,6 @@ export function registrationToSheetRow(registration: RegistrationData): string[]
     registration.notes || '',
     registration.terms_accepted.toString(),
     registration.source_page,
-    registration.plaid_customer_reference || '',
-    registration.plaid_transfer_id || '',
-    registration.plaid_payment_status_raw || '',
+    registration.stripe_session_id || '',
   ];
 }

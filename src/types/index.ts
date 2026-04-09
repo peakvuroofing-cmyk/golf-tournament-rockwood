@@ -36,24 +36,18 @@ export interface RegistrationData {
   notes?: string;
   terms_accepted: boolean;
   source_page: string;
-  plaid_customer_reference?: string;
-  plaid_transfer_id?: string;
-  plaid_payment_status_raw?: string;
+  stripe_session_id?: string;
 }
 
 export interface PaymentData {
   payment_id: string;
   submission_id: string;
   created_at: string;
-  payment_provider: 'plaid';
-  payment_method: 'ach';
+  payment_provider: 'stripe';
   amount: number;
   currency: 'USD';
-  plaid_transfer_id?: string;
-  plaid_access_reference?: string;
+  stripe_session_id?: string;
   payment_status: 'pending' | 'completed' | 'failed';
-  raw_response_summary?: string;
-  failure_reason?: string;
 }
 
 export interface AuditLogEntry {
@@ -111,16 +105,9 @@ export interface CreateRegistrationResponse {
   error?: string;
 }
 
-export interface CreateLinkTokenResponse {
+export interface CreateCheckoutSessionResponse {
   success: boolean;
-  link_token?: string;
-  error?: string;
-}
-
-export interface ExchangeTokenResponse {
-  success: boolean;
-  payment_id?: string;
-  status?: string;
+  url?: string;
   error?: string;
 }
 
@@ -130,55 +117,3 @@ export interface RegistrationStatusResponse {
   error?: string;
 }
 
-// Plaid types
-export interface PlaidLinkTokenCreateRequest {
-  user: {
-    client_user_id: string;
-  };
-  client_name: string;
-  products: string[];
-  country_codes: string[];
-  language: string;
-  account_filters: {
-    depository: {
-      account_subtypes: string[];
-    };
-  };
-}
-
-export interface PlaidLinkTokenCreateResponse {
-  link_token: string;
-  expiration: string;
-  request_id: string;
-}
-
-export interface PlaidPublicTokenExchangeRequest {
-  public_token: string;
-}
-
-export interface PlaidPublicTokenExchangeResponse {
-  access_token: string;
-  item_id: string;
-  request_id: string;
-}
-
-export interface PlaidTransferCreateRequest {
-  access_token: string;
-  account_id: string;
-  amount: string;
-  description: string;
-  ach_class: string;
-  network: string;
-  type: string;
-  user: {
-    legal_name: string;
-  };
-}
-
-export interface PlaidTransferCreateResponse {
-  transfer: {
-    id: string;
-    status: string;
-  };
-  request_id: string;
-}

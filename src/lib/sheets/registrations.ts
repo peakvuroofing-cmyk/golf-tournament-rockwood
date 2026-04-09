@@ -10,7 +10,7 @@ export async function addRegistration(registration: RegistrationData): Promise<v
   const row = registrationToSheetRow(registration);
   await appendRowsToSheet(
     config.google.spreadsheetId,
-    'Registrations!A:AK', // Columns A to AK (39 columns)
+    'Registrations!A:AK', // Columns A to AK (37 columns)
     [row]
   );
 }
@@ -22,8 +22,7 @@ export async function updateRegistrationStatus(
   submissionId: string,
   status: RegistrationData['registration_status'],
   paymentStatus: RegistrationData['payment_status'],
-  plaidTransferId?: string,
-  plaidPaymentStatusRaw?: string
+  stripeSessionId?: string
 ): Promise<void> {
   // Find the row by submission_id (column 0)
   const result = await findRowByValue(
@@ -38,18 +37,23 @@ export async function updateRegistrationStatus(
   }
 
   const { rowIndex } = result;
-  const range = `Registrations!D${rowIndex + 1}:F${rowIndex + 1}`; // registration_status, payment_status, plaid_transfer_id columns
-
+  // Update columns C (updated_at), E (registration_status), F (payment_status)
+  // Write updated_at in col C, skip D (registration_type), update E and F
   const now = new Date().toISOString();
-  const values = [[
-    status,
-    paymentStatus,
-    plaidTransferId || '',
-    plaidPaymentStatusRaw || '',
-    now, // updated_at
-  ]];
 
-  await updateRowInSheet(config.google.spreadsheetId, range, values);
+  // Update registration_status (col E) and payment_status (col F)
+  const statusRange = `Registrations!E${rowIndex + 1}:F${rowIndex + 1}`;
+  await updateRowInSheet(config.google.spreadsheetId, statusRange, [[status, paymentStatus]]);
+
+  // Update updated_at (col C)
+  const updatedAtRange = `Registrations!C${rowIndex + 1}`;
+  await updateRowInSheet(config.google.spreadsheetId, updatedAtRange, [[now]]);
+
+  // Update stripe_session_id (col AK) if provided
+  if (stripeSessionId) {
+    const sessionRange = `Registrations!AK${rowIndex + 1}`;
+    await updateRowInSheet(config.google.spreadsheetId, sessionRange, [[stripeSessionId]]);
+  }
 }
 
 /**
