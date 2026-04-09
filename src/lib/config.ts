@@ -19,11 +19,11 @@ export const config = {
     spreadsheetId: process.env.GOOGLE_SPREADSHEET_ID!,
   },
 
-  // Plaid
-  plaid: {
-    clientId: process.env.PLAID_CLIENT_ID!,
-    secret: process.env.PLAID_SECRET!,
-    env: process.env.PLAID_ENV || 'sandbox',
+  // Stripe
+  stripe: {
+    secretKey: process.env.STRIPE_SECRET_KEY!,
+    publishableKey: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!,
+    webhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
   },
 };
 
@@ -33,9 +33,8 @@ const googleEnvVars = [
   'GOOGLE_SPREADSHEET_ID',
 ];
 
-const plaidEnvVars = [
-  'PLAID_CLIENT_ID',
-  'PLAID_SECRET',
+const stripeEnvVars = [
+  'STRIPE_SECRET_KEY',
 ];
 
 function getMissingEnvVars(vars: string[]) {
@@ -49,15 +48,15 @@ export function validateGoogleConfig() {
   }
 }
 
-export function validatePlaidConfig() {
-  const missing = getMissingEnvVars(plaidEnvVars);
+export function validateStripeConfig() {
+  const missing = getMissingEnvVars(stripeEnvVars);
   if (missing.length > 0) {
-    throw new Error(`Missing required Plaid environment variables: ${missing.join(', ')}`);
+    throw new Error(`Missing required Stripe environment variables: ${missing.join(', ')}`);
   }
 }
 
 export function validateConfig() {
-  const missing = getMissingEnvVars([...googleEnvVars, ...plaidEnvVars]);
+  const missing = getMissingEnvVars([...googleEnvVars, ...stripeEnvVars]);
   if (missing.length > 0) {
     throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
   }

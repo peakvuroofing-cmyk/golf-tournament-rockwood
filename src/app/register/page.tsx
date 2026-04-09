@@ -37,7 +37,6 @@ export default function RegisterPage() {
   const [currentStep, setCurrentStep] = useState<RegistrationStep>('type');
   const [registrationType, setRegistrationType] = useState<'individual' | 'team'>('individual');
   const [submissionId, setSubmissionId] = useState<string | null>(null);
-  const [paymentId, setPaymentId] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -210,15 +209,6 @@ export default function RegisterPage() {
     }
   };
 
-  const handlePaymentSuccess = (newPaymentId: string) => {
-    setPaymentId(newPaymentId);
-    setCurrentStep('success');
-  };
-
-  const handlePaymentError = (errorMessage: string) => {
-    setError(errorMessage);
-    setCurrentStep('error');
-  };
 
   const renderStepContent = () => {
     switch (currentStep) {
@@ -373,12 +363,12 @@ export default function RegisterPage() {
             {submissionId && (
               <PaymentStep
                 submissionId={submissionId}
+                registrationType={registrationType}
                 amount={registrationType === 'individual'
                   ? parseInt(process.env.NEXT_PUBLIC_INDIVIDUAL_PRICE || '135')
                   : parseInt(process.env.NEXT_PUBLIC_TEAM_PRICE || '500')
                 }
-                onSuccess={handlePaymentSuccess}
-                onError={handlePaymentError}
+                customerEmail={registrationType === 'individual' ? individualData.email : teamData.contact_email}
               />
             )}
           </div>
@@ -400,7 +390,6 @@ export default function RegisterPage() {
               <h3 className="font-semibold text-gray-900 mb-2">Registration Details</h3>
               <div className="text-sm text-gray-600 space-y-1">
                 <p><strong>Submission ID:</strong> {submissionId}</p>
-                <p><strong>Payment ID:</strong> {paymentId}</p>
                 <p><strong>Type:</strong> {registrationType === 'individual' ? 'Individual' : 'Team'}</p>
                 <p><strong>Status:</strong> Paid</p>
               </div>
