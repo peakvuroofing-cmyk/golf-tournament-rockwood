@@ -2,6 +2,11 @@
 
 import React, { useState } from 'react';
 
+const SQUARE_LINKS = {
+  individual: 'https://square.link/u/BBm3kaNu?src=sheet',
+  team: 'https://square.link/u/kdW42fA7?src=sheet',
+};
+
 interface PaymentStepProps {
   submissionId: string;
   amount: number;
@@ -9,38 +14,13 @@ interface PaymentStepProps {
   customerEmail?: string;
 }
 
-export function PaymentStep({ submissionId, amount, registrationType, customerEmail }: PaymentStepProps) {
+export function PaymentStep({ submissionId, amount, registrationType }: PaymentStepProps) {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const squareUrl = SQUARE_LINKS[registrationType];
 
-  const handlePayment = async () => {
+  const handlePayment = () => {
     setLoading(true);
-    setError(null);
-
-    try {
-      const response = await fetch('/api/payments/create-checkout-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          submission_id: submissionId,
-          amount,
-          registration_type: registrationType,
-          customer_email: customerEmail,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to create payment session');
-      }
-
-      // Redirect to Stripe hosted checkout
-      window.location.href = data.url;
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Payment setup failed');
-      setLoading(false);
-    }
+    window.location.href = squareUrl;
   };
 
   return (
@@ -48,7 +28,7 @@ export function PaymentStep({ submissionId, amount, registrationType, customerEm
       <div className="mb-6">
         <div className="text-5xl mb-4">💳</div>
         <h3 className="text-2xl font-bold text-gray-900 mb-2">Complete Your Payment</h3>
-        <p className="text-gray-500">You&apos;ll be redirected to Stripe&apos;s secure payment page</p>
+        <p className="text-gray-500">You&apos;ll be redirected to our secure Square payment page</p>
       </div>
 
       <div className="bg-primary-50 rounded-2xl p-6 mb-6 ring-1 ring-primary-100">
@@ -59,12 +39,6 @@ export function PaymentStep({ submissionId, amount, registrationType, customerEm
         <div className="text-sm text-gray-500 mt-1">Rockwood Park Charity Golf Tournament · June 20, 2026</div>
       </div>
 
-      {error && (
-        <div className="bg-red-50 text-red-700 rounded-xl p-4 mb-4 text-sm font-medium">
-          {error}
-        </div>
-      )}
-
       <button
         onClick={handlePayment}
         disabled={loading}
@@ -73,15 +47,15 @@ export function PaymentStep({ submissionId, amount, registrationType, customerEm
         {loading ? (
           <span className="flex items-center justify-center gap-2">
             <span className="animate-spin inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full" />
-            Redirecting to Stripe...
+            Redirecting to Square...
           </span>
         ) : (
-          `Pay $${amount} Securely →`
+          `Pay $${amount} with Square →`
         )}
       </button>
 
       <div className="mt-5 text-sm text-gray-500 space-y-1">
-        <p>🔒 256-bit SSL encrypted · Powered by Stripe</p>
+        <p>🔒 Secure payment powered by Square</p>
         <p>💳 Visa · Mastercard · Amex · Apple Pay · Google Pay</p>
         <p>📧 Receipt emailed to you automatically</p>
       </div>

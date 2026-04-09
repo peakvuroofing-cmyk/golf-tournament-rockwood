@@ -243,13 +243,29 @@ export default function HomePage() {
             This tournament is made possible by the generous support of our sponsors. Interested in sponsoring? Reach out to us — various packages are available.
           </p>
           <div className="flex flex-wrap justify-center gap-8 mb-10">
-            <div className="bg-gray-50 rounded-xl p-6 shadow flex flex-col items-center w-48">
-              <Image src="/sponsor-ktr-fences.jpg" alt="KTR Fences" width={120} height={120} className="object-contain rounded-lg mb-3" />
-              <p className="font-semibold text-gray-800 text-sm">KTR Fences</p>
+            <div className="bg-white rounded-xl p-5 shadow flex flex-col items-center w-44">
+              <Image src="/sponsor-ktr-fences.jpg" alt="KTR Fences" width={120} height={120} className="object-contain mb-3" style={{ mixBlendMode: 'multiply' }} />
+              <p className="font-semibold text-gray-800 text-sm text-center">KTR Fences</p>
             </div>
-            <div className="bg-gray-50 rounded-xl p-6 shadow flex flex-col items-center w-48">
-              <Image src="/sponsor-peakvu.jpg" alt="PeakVu Property Services" width={120} height={120} className="object-contain rounded-lg mb-3" />
-              <p className="font-semibold text-gray-800 text-sm">PeakVu Property Services</p>
+            <div className="bg-white rounded-xl p-5 shadow flex flex-col items-center w-44">
+              <Image src="/sponsor-peakvu.jpg" alt="PeakVu Property Services" width={120} height={120} className="object-contain mb-3" style={{ mixBlendMode: 'multiply' }} />
+              <p className="font-semibold text-gray-800 text-sm text-center">PeakVu Property Services</p>
+            </div>
+            <div className="bg-white rounded-xl p-5 shadow flex flex-col items-center w-44">
+              <Image src="/sponsor-lemon-squeeze.png" alt="T's Lemon Squeeze" width={120} height={120} className="object-contain mb-3" style={{ mixBlendMode: 'multiply' }} />
+              <p className="font-semibold text-gray-800 text-sm text-center">T&apos;s Lemon Squeeze</p>
+            </div>
+            <div className="bg-white rounded-xl p-5 shadow flex flex-col items-center w-44">
+              <Image src="/sponsor-tlc-designs.png" alt="TLC Custom Designs" width={120} height={120} className="object-contain mb-3" style={{ mixBlendMode: 'multiply' }} />
+              <p className="font-semibold text-gray-800 text-sm text-center">TLC Custom Designs</p>
+            </div>
+            <div className="bg-white rounded-xl p-5 shadow flex flex-col items-center w-44">
+              <Image src="/sponsor-globe-life.jpg" alt="Globe Life — Jennifer Thompson" width={120} height={120} className="object-contain mb-3" style={{ mixBlendMode: 'multiply' }} />
+              <p className="font-semibold text-gray-800 text-sm text-center">Globe Life Insurance</p>
+            </div>
+            <div className="bg-white rounded-xl p-5 shadow flex flex-col items-center w-44">
+              <Image src="/sponsor-baker-services.jpg" alt="Baker Services" width={120} height={120} className="object-contain mb-3" style={{ mixBlendMode: 'multiply' }} />
+              <p className="font-semibold text-gray-800 text-sm text-center">Baker Services</p>
             </div>
           </div>
           <a
