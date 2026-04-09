@@ -13,8 +13,8 @@ export default function HomePage() {
           <Image
             src="/logo-rockwood.png"
             alt="Rockwood Park Golf Course"
-            width={160}
-            height={80}
+            width={400}
+            height={200}
             className="object-contain mix-blend-screen"
             style={{ filter: 'invert(1)' }}
           />
@@ -23,8 +23,8 @@ export default function HomePage() {
           <Image
             src="/logo-fortworthgolf.png"
             alt="Fort Worth Golf"
-            width={160}
-            height={80}
+            width={400}
+            height={200}
             className="object-contain mix-blend-screen"
           />
         </div>
