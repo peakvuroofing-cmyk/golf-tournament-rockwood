@@ -8,6 +8,27 @@ export default function HomePage() {
     <div className="min-h-screen bg-white">
       {/* Hero Section with Golf Background */}
       <div className="relative overflow-hidden bg-gradient-to-r from-navy via-secondary-600 to-primary-700 text-white">
+        {/* Corner logos */}
+        <div className="absolute top-4 left-4 z-10">
+          <Image
+            src="/logo-rockwood.png"
+            alt="Rockwood Park Golf Course"
+            width={160}
+            height={80}
+            className="object-contain mix-blend-screen"
+            style={{ filter: 'invert(1)' }}
+          />
+        </div>
+        <div className="absolute top-4 right-4 z-10">
+          <Image
+            src="/logo-fortworthgolf.png"
+            alt="Fort Worth Golf"
+            width={160}
+            height={80}
+            className="object-contain mix-blend-screen"
+          />
+        </div>
+
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-2000"></div>
