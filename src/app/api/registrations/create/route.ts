@@ -2,42 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { createRegistrationSchema } from '@/lib/validation/schemas';
 import { normalizeIndividualData, normalizeTeamData } from '@/lib/utils/normalize-data';
-import { addRegistration, checkDuplicateEmail } from '@/lib/sheets/registrations';
-import { logRegistrationSubmission } from '@/lib/sheets/audit-log';
 import { sanitizeFormData } from '@/lib/utils/sanitize';
-import { validateGoogleConfig } from '@/lib/config';
 
 export async function POST(request: NextRequest) {
   try {
-    // Validate configuration for Google Sheets access
-    validateGoogleConfig();
-
-    // Parse and validate request body
     const body = await request.json();
     const validatedData = createRegistrationSchema.parse(body);
 
-    // Sanitize form data
     const sanitizedData = sanitizeFormData(validatedData.form_data);
-
-    // Check for duplicate email
-    const email = validatedData.registration_type === 'individual'
-      ? (sanitizedData as any).email
-      : (sanitizedData as any).contact_email;
-
-    const isDuplicate = await checkDuplicateEmail(email);
-    if (isDuplicate) {
-      await logRegistrationSubmission(
-        'duplicate-check',
-        validatedData.registration_type,
-        'failure',
-        `Duplicate email detected: ${email}`
-      );
-
-      return NextResponse.json(
-        { success: false, error: 'This email address has already been registered.' },
-        { status: 409 }
-      );
-    }
 
     // Normalize data based on registration type
     let registrationData;
@@ -47,7 +19,6 @@ export async function POST(request: NextRequest) {
       registrationData = normalizeTeamData(sanitizedData as any);
     }
 
-    // Add timestamps
     const now = new Date().toISOString();
     const fullRegistration = {
       ...registrationData,
@@ -55,16 +26,41 @@ export async function POST(request: NextRequest) {
       updated_at: now,
     };
 
-    // Save to Google Sheets
-    await addRegistration(fullRegistration);
+    // Try to save to Google Sheets — but don't block payment if not configured
+    const googleConfigured =
+      process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL &&
+      process.env.GOOGLE_PRIVATE_KEY &&
+      process.env.GOOGLE_SPREADSHEET_ID;
 
-    // Log successful registration
-    await logRegistrationSubmission(
-      fullRegistration.submission_id,
-      validatedData.registration_type,
-      'success',
-      `Registration created for ${email}`
-    );
+    if (googleConfigured) {
+      try {
+        const { addRegistration, checkDuplicateEmail } = await import('@/lib/sheets/registrations');
+        const { logRegistrationSubmission } = await import('@/lib/sheets/audit-log');
+
+        const email = validatedData.registration_type === 'individual'
+          ? (sanitizedData as any).email
+          : (sanitizedData as any).contact_email;
+
+        const isDuplicate = await checkDuplicateEmail(email);
+        if (isDuplicate) {
+          return NextResponse.json(
+            { success: false, error: 'This email address has already been registered.' },
+            { status: 409 }
+          );
+        }
+
+        await addRegistration(fullRegistration);
+        await logRegistrationSubmission(
+          fullRegistration.submission_id,
+          validatedData.registration_type,
+          'success',
+          `Registration created for ${email}`
+        );
+      } catch (sheetError) {
+        // Log but don't fail — payment can still proceed
+        console.error('Google Sheets save failed (non-fatal):', sheetError);
+      }
+    }
 
     return NextResponse.json({
       success: true,
@@ -73,18 +69,6 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Registration creation error:', error);
-
-    // Log failure
-    try {
-      await logRegistrationSubmission(
-        'error-handling',
-        'individual', // fallback since we don't know the type in error case
-        'failure',
-        `Registration creation failed: ${error instanceof Error ? error.message : 'Unknown error'}`
-      );
-    } catch (logError) {
-      console.error('Failed to log error:', logError);
-    }
 
     if (error instanceof z.ZodError) {
       return NextResponse.json(

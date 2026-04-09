@@ -252,7 +252,7 @@ export default function HomePage() {
               <p className="font-semibold text-gray-800 text-sm text-center">PeakVu Property Services</p>
             </div>
             <div className="bg-white rounded-xl p-5 shadow flex flex-col items-center w-44">
-              <Image src="/sponsor-lemon-squeeze.png" alt="T's Lemon Squeeze" width={120} height={120} className="object-contain mb-3" style={{ mixBlendMode: 'multiply' }} />
+              <Image src="/sponsor-lemon-squeeze.jpg" alt="T's Lemon Squeeze" width={120} height={120} className="object-contain mb-3" style={{ mixBlendMode: 'multiply' }} />
               <p className="font-semibold text-gray-800 text-sm text-center">T&apos;s Lemon Squeeze</p>
             </div>
             <div className="bg-white rounded-xl p-5 shadow flex flex-col items-center w-44">
@@ -260,7 +260,7 @@ export default function HomePage() {
               <p className="font-semibold text-gray-800 text-sm text-center">TLC Custom Designs</p>
             </div>
             <div className="bg-white rounded-xl p-5 shadow flex flex-col items-center w-44">
-              <Image src="/sponsor-globe-life.jpg" alt="Globe Life — Jennifer Thompson" width={120} height={120} className="object-contain mb-3" style={{ mixBlendMode: 'multiply' }} />
+              <Image src="/sponsor-globe-life.jpg" alt="Globe Life Insurance" width={120} height={120} className="object-contain mb-3" style={{ mixBlendMode: 'multiply' }} />
               <p className="font-semibold text-gray-800 text-sm text-center">Globe Life Insurance</p>
             </div>
             <div className="bg-white rounded-xl p-5 shadow flex flex-col items-center w-44">
