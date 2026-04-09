@@ -107,6 +107,7 @@ export function IndividualForm({ formData, errors, onChange, onBlur }: Individua
         onChange={handleFieldChange}
         onBlur={handleFieldBlur}
         error={errors.bbq_choice}
+        required
         options={[
           { value: 'beef', label: 'Beef' },
           { value: 'chicken', label: 'Chicken' },

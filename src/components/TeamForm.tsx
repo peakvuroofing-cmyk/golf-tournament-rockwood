@@ -137,6 +137,7 @@ export function TeamForm({ formData, errors, onChange, onBlur }: TeamFormProps) 
               onChange={handleFieldChange}
               onBlur={handleFieldBlur}
               error={(errors as any)[`bbq_choice_${playerNum}`]}
+              required
               options={[
                 { value: 'beef', label: 'Beef' },
                 { value: 'chicken', label: 'Chicken' },

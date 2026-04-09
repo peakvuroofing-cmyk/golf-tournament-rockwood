@@ -20,7 +20,7 @@ export const individualFormSchema = z.object({
   handicap: z.string().max(10, 'Handicap too long').optional(),
   preferred_playing_partners: z.string().max(200, 'Preferred partners too long').optional(),
   sponsorship_interest: z.boolean(),
-  bbq_choice: z.enum(['beef', 'chicken', 'vegetarian', 'none']).optional(),
+  bbq_choice: z.enum(['beef', 'chicken', 'vegetarian', 'none'], { required_error: 'BBQ choice is required' }),
   notes: z.string().max(500, 'Notes too long').optional(),
   terms_accepted: z.boolean().refine(val => val === true, 'Terms must be accepted'),
 });
@@ -48,10 +48,10 @@ export const teamFormSchema = z.object({
   handicap_3: z.string().max(10, 'Handicap too long').optional(),
   handicap_4: z.string().max(10, 'Handicap too long').optional(),
   sponsorship_interest: z.boolean(),
-  bbq_choice_1: z.enum(['beef', 'chicken', 'vegetarian', 'none']).optional(),
-  bbq_choice_2: z.enum(['beef', 'chicken', 'vegetarian', 'none']).optional(),
-  bbq_choice_3: z.enum(['beef', 'chicken', 'vegetarian', 'none']).optional(),
-  bbq_choice_4: z.enum(['beef', 'chicken', 'vegetarian', 'none']).optional(),
+  bbq_choice_1: z.enum(['beef', 'chicken', 'vegetarian', 'none'], { required_error: 'BBQ choice is required for Player 1' }),
+  bbq_choice_2: z.enum(['beef', 'chicken', 'vegetarian', 'none'], { required_error: 'BBQ choice is required for Player 2' }),
+  bbq_choice_3: z.enum(['beef', 'chicken', 'vegetarian', 'none'], { required_error: 'BBQ choice is required for Player 3' }),
+  bbq_choice_4: z.enum(['beef', 'chicken', 'vegetarian', 'none'], { required_error: 'BBQ choice is required for Player 4' }),
   notes: z.string().max(500, 'Notes too long').optional(),
   terms_accepted: z.boolean().refine(val => val === true, 'Terms must be accepted'),
 });
