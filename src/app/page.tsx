@@ -114,7 +114,7 @@ export default function HomePage() {
       </div>
 
       {/* Course Information */}
-      <div className="py-16 bg-white">
+      <div id="about" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-r from-secondary-50 to-primary-50 rounded-lg p-12">
             <h2 className="text-4xl font-bold text-secondary-900 mb-6 font-serif">About Rockwood Park</h2>
@@ -134,7 +134,7 @@ export default function HomePage() {
       </div>
 
       {/* BBQ Menu Section */}
-      <div className="bg-secondary-50 py-16">
+      <div id="bbq-menu" className="bg-secondary-50 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Menu */}
@@ -230,6 +230,87 @@ export default function HomePage() {
                 <p className="text-gray-700">{item.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Sponsors Section */}
+      <div id="sponsors" className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-sm uppercase tracking-widest text-slate-500 mb-3">Our Sponsors</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 font-serif">Thank You to Our Sponsors</h2>
+          <p className="text-gray-600 mb-10 max-w-2xl mx-auto">
+            This tournament is made possible by the generous support of our sponsors. Interested in sponsoring? Reach out to us — various packages are available.
+          </p>
+          <div className="flex flex-wrap justify-center gap-8 mb-10">
+            <div className="bg-gray-50 rounded-xl p-6 shadow flex flex-col items-center w-48">
+              <Image src="/sponsor-ktr-fences.jpg" alt="KTR Fences" width={120} height={120} className="object-contain rounded-lg mb-3" />
+              <p className="font-semibold text-gray-800 text-sm">KTR Fences</p>
+            </div>
+            <div className="bg-gray-50 rounded-xl p-6 shadow flex flex-col items-center w-48">
+              <Image src="/sponsor-peakvu.jpg" alt="PeakVu Property Services" width={120} height={120} className="object-contain rounded-lg mb-3" />
+              <p className="font-semibold text-gray-800 text-sm">PeakVu Property Services</p>
+            </div>
+          </div>
+          <a
+            href="mailto:info@rockwoodgolftournament.com?subject=Sponsorship Inquiry"
+            className="inline-block px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-lg transition-colors"
+          >
+            Become a Sponsor
+          </a>
+        </div>
+      </div>
+
+      {/* Donate Section */}
+      <div id="donate" className="py-16 bg-gradient-to-br from-secondary-50 to-primary-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-sm uppercase tracking-widest text-slate-500 mb-3">Give Back</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 font-serif">Donate to the Cause</h2>
+          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+            Can't make it to the tournament? You can still make a difference. All donations go directly to supporting local charities and community programs in the Fort Worth area.
+          </p>
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-8 text-left max-w-xl mx-auto">
+            <h3 className="font-bold text-gray-900 mb-4">Your donation supports:</h3>
+            <ul className="space-y-3 text-gray-700">
+              <li className="flex items-center"><span className="w-2 h-2 bg-primary-600 rounded-full mr-3 flex-shrink-0"></span>Local youth sports programs</li>
+              <li className="flex items-center"><span className="w-2 h-2 bg-primary-600 rounded-full mr-3 flex-shrink-0"></span>Community food banks and outreach</li>
+              <li className="flex items-center"><span className="w-2 h-2 bg-primary-600 rounded-full mr-3 flex-shrink-0"></span>Fort Worth area charitable organizations</li>
+            </ul>
+          </div>
+          <a
+            href="mailto:info@rockwoodgolftournament.com?subject=Donation Inquiry"
+            className="inline-block px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-lg transition-colors"
+          >
+            Contact Us to Donate
+          </a>
+        </div>
+      </div>
+
+      {/* Contact Section */}
+      <div id="contact" className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-sm uppercase tracking-widest text-slate-500 mb-3">Get in Touch</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 font-serif">Contact Us</h2>
+          <p className="text-gray-600 mb-10">Questions about registration, sponsorship, or the event? We'd love to hear from you.</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-gray-50 rounded-xl p-6 shadow">
+              <div className="text-3xl mb-3">📍</div>
+              <h3 className="font-bold text-gray-900 mb-2">Location</h3>
+              <p className="text-gray-600 text-sm">Rockwood Park Golf Course</p>
+              <p className="text-gray-600 text-sm">1851 Jacksboro Hwy</p>
+              <p className="text-gray-600 text-sm">Fort Worth, TX 76114</p>
+            </div>
+            <div className="bg-gray-50 rounded-xl p-6 shadow">
+              <div className="text-3xl mb-3">📞</div>
+              <h3 className="font-bold text-gray-900 mb-2">Phone</h3>
+              <a href="tel:8173926560" className="text-primary-600 hover:text-primary-700 font-semibold">(817) 392-6560</a>
+              <p className="text-gray-500 text-sm mt-1">Pro Shop</p>
+            </div>
+            <div className="bg-gray-50 rounded-xl p-6 shadow">
+              <div className="text-3xl mb-3">✉️</div>
+              <h3 className="font-bold text-gray-900 mb-2">Email</h3>
+              <a href="mailto:info@rockwoodgolftournament.com" className="text-primary-600 hover:text-primary-700 font-semibold text-sm">info@rockwoodgolftournament.com</a>
+            </div>
           </div>
         </div>
       </div>

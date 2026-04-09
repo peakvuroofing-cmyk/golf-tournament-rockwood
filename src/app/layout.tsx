@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Link from 'next/link'
+import { NavBar } from '@/components/NavBar'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -19,28 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="min-h-screen bg-white flex flex-col">
-          {/* Premium Header */}
-          <header className="bg-gradient-to-r from-navy via-secondary-800 to-secondary-900 text-white shadow-lg">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex justify-between items-center py-4">
-                <Link href="/" className="flex items-center space-x-2 hover:opacity-90 transition-opacity">
-                  <div className="text-2xl font-serif font-bold">🏌️</div>
-                  <div className="hidden sm:block">
-                    <h1 className="text-sm font-semibold text-primary-300">ROCKWOOD PARK</h1>
-                    <p className="text-xs text-primary-200">Charity Golf Tournament</p>
-                  </div>
-                </Link>
-                <nav className="flex space-x-8 items-center">
-                  <Link href="/" className="text-primary-100 hover:text-white font-medium transition-colors">
-                    Home
-                  </Link>
-                  <Link href="/register" className="px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors">
-                    Register
-                  </Link>
-                </nav>
-              </div>
-            </div>
-          </header>
+          <NavBar />
 
           {/* Main Content */}
           <main className="flex-1">{children}</main>
