@@ -52,52 +52,42 @@ export default function HomePage() {
               </p>
               <Link
                 href="/register"
-                className="inline-block px-8 py-4 bg-primary-500 hover:bg-primary-600 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                className="inline-block px-10 py-5 bg-white text-primary-700 hover:bg-primary-50 font-extrabold text-xl rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl ring-4 ring-white/40 tracking-wide"
               >
-                REGISTER YOUR TEAM TODAY
+                ⛳ REGISTER YOUR TEAM TODAY
               </Link>
             </div>
 
             {/* Right: Event Details */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Pricing Cards */}
-              <div className="bg-white bg-opacity-95 rounded-lg p-8 shadow-xl hover:shadow-2xl transition-shadow">
+              {/* Pricing Cards — clickable */}
+              <Link
+                href="/register"
+                className="group bg-white bg-opacity-95 rounded-lg p-8 shadow-xl hover:shadow-2xl transition-all hover:scale-105 hover:ring-2 hover:ring-primary-400 cursor-pointer"
+              >
                 <div className="text-5xl font-bold text-primary-600 mb-2">$135</div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">Individual</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-primary-600 rounded-full mr-2"></span>
-                    18 Holes of Golf
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-primary-600 rounded-full mr-2"></span>
-                    BBQ Lunch Included
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-primary-600 rounded-full mr-2"></span>
-                    Awards & Prizes
-                  </li>
+                <ul className="space-y-2 text-gray-700 mb-4">
+                  <li className="flex items-center"><span className="w-2 h-2 bg-primary-600 rounded-full mr-2"></span>18 Holes of Golf</li>
+                  <li className="flex items-center"><span className="w-2 h-2 bg-primary-600 rounded-full mr-2"></span>BBQ Lunch Included</li>
+                  <li className="flex items-center"><span className="w-2 h-2 bg-primary-600 rounded-full mr-2"></span>Awards &amp; Prizes</li>
                 </ul>
-              </div>
+                <span className="text-primary-600 font-semibold text-sm group-hover:underline">Register →</span>
+              </Link>
 
-              <div className="bg-primary-600 text-white rounded-lg p-8 shadow-xl hover:shadow-2xl transition-shadow transform hover:scale-105">
+              <Link
+                href="/register"
+                className="group bg-primary-600 text-white rounded-lg p-8 shadow-xl hover:shadow-2xl transition-all hover:scale-105 hover:bg-primary-700 hover:ring-2 hover:ring-white/40 cursor-pointer"
+              >
                 <div className="text-5xl font-bold mb-2">$500</div>
                 <h3 className="text-2xl font-bold mb-4">Team of 4</h3>
-                <ul className="space-y-2 text-primary-50">
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-white rounded-full mr-2"></span>
-                    Best Value Option
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-white rounded-full mr-2"></span>
-                    $125 per player
-                  </li>
-                  <li className="flex items-center">
-                    <span className="w-2 h-2 bg-white rounded-full mr-2"></span>
-                    Come Together 🏌️
-                  </li>
+                <ul className="space-y-2 text-primary-50 mb-4">
+                  <li className="flex items-center"><span className="w-2 h-2 bg-white rounded-full mr-2"></span>Best Value Option</li>
+                  <li className="flex items-center"><span className="w-2 h-2 bg-white rounded-full mr-2"></span>$125 per player</li>
+                  <li className="flex items-center"><span className="w-2 h-2 bg-white rounded-full mr-2"></span>Come Together 🏌️</li>
                 </ul>
-              </div>
+                <span className="text-white font-semibold text-sm group-hover:underline">Register →</span>
+              </Link>
             </div>
           </div>
         </div>
