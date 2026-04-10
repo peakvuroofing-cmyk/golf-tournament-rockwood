@@ -6,8 +6,17 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: process.env.NEXT_PUBLIC_EVENT_NAME || 'NorTex Society Charity Golf Tournament',
-  description: 'Register for the NorTex Society Charity Golf Tournament at Rockwood Park Golf Course',
+  title: {
+    default: 'NorTex Society Charity Golf Tournament 2026 | Fort Worth, TX',
+    template: '%s | NorTex Society',
+  },
+  description: 'NorTex Society hosts the 2026 Charity Golf Tournament at Rockwood Park Golf Course in Fort Worth, TX. All proceeds support youth sports programs across Tarrant County. Register today — $135 individual or $500 team of 4.',
+  keywords: ['NorTex Society', 'charity golf tournament Fort Worth', 'Rockwood Park golf tournament', 'youth sports Fort Worth TX', 'Tarrant County youth athletics', 'Fort Worth community event 2026'],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'NorTex Society Charity Golf Tournament',
+  },
 }
 
 export default function RootLayout({

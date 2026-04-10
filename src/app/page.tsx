@@ -39,7 +39,7 @@ export default function HomePage() {
             {/* Left: Banner Text */}
             <div className="text-center lg:text-left">
               <div className="flex items-center gap-3 mb-6">
-                <Image src="/logo-nortex.jpg" alt="NorTex Society" width={56} height={56} className="rounded-xl object-cover shadow-lg" />
+                <Image src="/logo-nortex-crest.png" alt="NorTex Society" width={56} height={56} className="rounded-xl object-cover shadow-lg" />
                 <span className="px-4 py-2 bg-primary-500 rounded-full text-sm font-bold text-white tracking-wide">NORTEX SOCIETY</span>
               </div>
               <h1 className="text-5xl lg:text-7xl font-bold mb-4 font-serif">
@@ -116,7 +116,7 @@ export default function HomePage() {
             <div className="space-y-6">
               <div>
                 <div className="flex items-center gap-3 mb-3">
-                  <Image src="/logo-nortex.jpg" alt="NorTex Society" width={48} height={48} className="rounded-lg object-cover shadow" />
+                  <Image src="/logo-nortex-crest.png" alt="NorTex Society" width={48} height={48} className="rounded-lg object-cover shadow" />
                   <span className="text-sm uppercase tracking-widest text-primary-600 font-bold">NorTex Society Presents</span>
                 </div>
                 <h2 className="text-4xl font-bold text-gray-900 font-serif mb-4">Join Us on the Course</h2>

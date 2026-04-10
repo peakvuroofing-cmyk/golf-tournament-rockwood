@@ -29,11 +29,11 @@ export function NavBar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 hover:opacity-90 transition-opacity">
             <Image
-              src="/logo-nortex.jpg"
+              src="/logo-nortex-crest.png"
               alt="NorTex Society"
               width={48}
               height={48}
-              className="rounded-lg object-cover"
+              className="object-contain"
             />
             <div className="hidden sm:block">
               <h1 className="text-sm font-bold text-white tracking-wide">NORTEX SOCIETY</h1>
