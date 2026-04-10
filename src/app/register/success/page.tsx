@@ -77,7 +77,7 @@ export default function RegistrationSuccessPage() {
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-3">You&apos;re Registered!</h1>
           <p className="text-gray-600 mb-2">
-            Thank you for signing up for the Rockwood Park Charity Golf Tournament.
+            Thank you for signing up for the NorTex Society Charity Golf Tournament.
           </p>
           {customerEmail && (
             <p className="text-gray-500 text-sm mb-6">

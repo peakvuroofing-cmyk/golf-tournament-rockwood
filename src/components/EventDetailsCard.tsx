@@ -25,7 +25,7 @@ export function EventDetailsCard({ className = '' }: EventDetailsCardProps) {
   return (
     <div className={`bg-white rounded-lg shadow-md p-6 ${className}`}>
       <h2 className="text-2xl font-bold text-gray-900 mb-4">
-        {process.env.NEXT_PUBLIC_EVENT_NAME || 'Rockwood Park Charity Golf Tournament'}
+        {process.env.NEXT_PUBLIC_EVENT_NAME || 'NorTex Society Charity Golf Tournament'}
       </h2>
 
       <div className="space-y-3">

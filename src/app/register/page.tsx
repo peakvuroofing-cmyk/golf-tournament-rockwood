@@ -217,7 +217,7 @@ export default function RegisterPage() {
           <div className="max-w-4xl mx-auto">
             <div className="overflow-hidden rounded-[2rem] bg-gradient-to-r from-primary-600 via-secondary-600 to-navy p-10 shadow-2xl ring-1 ring-white/20 text-white mb-10">
               <p className="uppercase tracking-[0.25em] text-sm text-primary-200 mb-4">
-                Rockwood Park Golf Tournament
+                NorTex Society Golf Tournament
               </p>
               <h1 className="text-4xl sm:text-5xl font-semibold mb-4">Register for the Tournament</h1>
               <p className="text-lg text-primary-100 max-w-3xl mb-8">
@@ -276,7 +276,7 @@ export default function RegisterPage() {
 
             <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
               <div className="xl:col-span-3 space-y-6">
-                {registrationPhotos.slice(0, 2).map((photo, idx) => (
+                {registrationPhotos.slice(0, 2).map((photo) => (
                   <div key={photo.src} className="overflow-hidden rounded-[2rem] shadow-2xl ring-1 ring-slate-200 bg-white">
                     <Image src={photo.src} alt={photo.alt} width={400} height={288} className="h-72 w-full object-cover" />
                     <div className="p-4 bg-gradient-to-t from-slate-950/80 to-transparent text-white">

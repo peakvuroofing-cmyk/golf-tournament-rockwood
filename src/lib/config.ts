@@ -2,7 +2,7 @@
 export const config = {
   // Event details
   event: {
-    name: process.env.NEXT_PUBLIC_EVENT_NAME || 'Rockwood Park Golf Course Charity Golf Tournament',
+    name: process.env.NEXT_PUBLIC_EVENT_NAME || 'NorTex Society Charity Golf Tournament',
     date: process.env.NEXT_PUBLIC_EVENT_DATE || '2026-06-20',
     venueName: process.env.NEXT_PUBLIC_VENUE_NAME || 'Rockwood Golf Course',
     venueAddress: process.env.NEXT_PUBLIC_VENUE_ADDRESS || '1851 Jacksboro Hwy, Fort Worth, TX 76114',

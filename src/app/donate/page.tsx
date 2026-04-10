@@ -9,7 +9,7 @@ export default function DonatePage() {
           <p className="text-sm uppercase tracking-widest text-primary-300 mb-3">Give Back</p>
           <h1 className="text-4xl sm:text-5xl font-bold font-serif mb-4">Donate to the Cause</h1>
           <p className="text-primary-100 text-lg max-w-2xl mx-auto">
-            Can&apos;t make it to the tournament? You can still make a difference in the Fort Worth community.
+            Can&apos;t make it to the tournament? Support NorTex Society and make a difference in the Fort Worth community.
           </p>
         </div>
       </div>
@@ -35,7 +35,7 @@ export default function DonatePage() {
           <div className="text-5xl mb-4">💚</div>
           <h2 className="text-3xl font-bold mb-3">Every Dollar Counts</h2>
           <p className="text-primary-100 max-w-lg mx-auto mb-8">
-            All proceeds from the tournament and donations go directly to supporting local charities and community programs in the Fort Worth area. No amount is too small.
+            All proceeds from the NorTex Society Golf Tournament go directly to supporting local charities and community programs in the Fort Worth area. No amount is too small.
           </p>
           <a
             href="mailto:info@rockwoodgolftournament.com?subject=Donation Inquiry — Rockwood Golf Tournament"

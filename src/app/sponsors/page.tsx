@@ -38,7 +38,7 @@ export default function SponsorsPage() {
           <p className="text-sm uppercase tracking-widest text-primary-300 mb-3">Community Partners</p>
           <h1 className="text-4xl sm:text-5xl font-bold font-serif mb-4">Our Sponsors</h1>
           <p className="text-primary-100 text-lg max-w-2xl mx-auto">
-            This tournament is made possible by the generous support of local businesses and organizations
+            The NorTex Society Golf Tournament is made possible by the generous support of local businesses and organizations
           </p>
         </div>
       </div>

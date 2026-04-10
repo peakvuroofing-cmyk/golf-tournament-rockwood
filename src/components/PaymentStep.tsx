@@ -36,7 +36,7 @@ export function PaymentStep({ submissionId, amount, registrationType }: PaymentS
         <div className="text-gray-700 font-medium">
           {registrationType === 'individual' ? 'Individual Registration' : 'Team Registration (4 Players)'}
         </div>
-        <div className="text-sm text-gray-500 mt-1">Rockwood Park Charity Golf Tournament · June 20, 2026</div>
+        <div className="text-sm text-gray-500 mt-1">NorTex Society Charity Golf Tournament · June 20, 2026</div>
       </div>
 
       <button

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 
@@ -26,10 +27,16 @@ export function NavBar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 hover:opacity-90 transition-opacity">
-            <div className="text-2xl font-serif font-bold">🏌️</div>
+          <Link href="/" className="flex items-center space-x-3 hover:opacity-90 transition-opacity">
+            <Image
+              src="/logo-nortex.jpg"
+              alt="NorTex Society"
+              width={48}
+              height={48}
+              className="rounded-lg object-cover"
+            />
             <div className="hidden sm:block">
-              <h1 className="text-sm font-semibold text-primary-300">ROCKWOOD PARK</h1>
+              <h1 className="text-sm font-bold text-white tracking-wide">NORTEX SOCIETY</h1>
               <p className="text-xs text-primary-200">Charity Golf Tournament</p>
             </div>
           </Link>

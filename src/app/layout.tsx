@@ -6,8 +6,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: process.env.NEXT_PUBLIC_EVENT_NAME || 'Golf Tournament Registration',
-  description: 'Register for the Rockwood Park Golf Course Charity Golf Tournament',
+  title: process.env.NEXT_PUBLIC_EVENT_NAME || 'NorTex Society Charity Golf Tournament',
+  description: 'Register for the NorTex Society Charity Golf Tournament at Rockwood Park Golf Course',
 }
 
 export default function RootLayout({
@@ -53,8 +53,8 @@ export default function RootLayout({
               </div>
               
               <div className="border-t border-secondary-700 pt-6 text-center text-gray-400 text-sm">
-                <p>&copy; 2026 Rockwood Park Golf Course Charity Golf Tournament</p>
-                <p className="mt-2 text-xs">Supporting local charities and community programs</p>
+                <p>&copy; 2026 NorTex Society · Charity Golf Tournament at Rockwood Park Golf Course</p>
+                <p className="mt-2 text-xs">Supporting local charities and community programs in Fort Worth, TX</p>
               </div>
             </div>
           </footer>

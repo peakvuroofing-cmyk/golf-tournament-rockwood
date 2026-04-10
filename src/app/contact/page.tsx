@@ -8,7 +8,7 @@ export default function ContactPage() {
       <div className="bg-gradient-to-r from-navy via-secondary-800 to-secondary-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-sm uppercase tracking-widest text-primary-300 mb-3">Get in Touch</p>
-          <h1 className="text-4xl sm:text-5xl font-bold font-serif mb-4">Contact Us</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold font-serif mb-4">Contact NorTex Society</h1>
           <p className="text-primary-100 text-lg max-w-xl mx-auto">
             Questions about registration, sponsorship, or the event? We&apos;d love to hear from you.
           </p>

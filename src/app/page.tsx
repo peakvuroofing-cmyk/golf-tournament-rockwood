@@ -38,14 +38,15 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left: Banner Text */}
             <div className="text-center lg:text-left">
-              <div className="inline-block px-6 py-2 bg-primary-500 rounded-full text-sm font-semibold mb-6 text-white">
-                COMMUNITY CHARITY EVENT
+              <div className="flex items-center gap-3 mb-6">
+                <Image src="/logo-nortex.jpg" alt="NorTex Society" width={56} height={56} className="rounded-xl object-cover shadow-lg" />
+                <span className="px-4 py-2 bg-primary-500 rounded-full text-sm font-bold text-white tracking-wide">NORTEX SOCIETY</span>
               </div>
               <h1 className="text-5xl lg:text-7xl font-bold mb-4 font-serif">
                 CHARITY GOLF TOURNAMENT
               </h1>
               <p className="text-xl text-primary-100 mb-4 font-semibold">
-                Rockwood Park Golf Course
+                Hosted at Rockwood Park Golf Course
               </p>
               <p className="text-lg text-gray-200 mb-8">
                 Saturday, June 20, 2026 • Registration 7:00 AM • Shotgun Start 8:00 AM
@@ -114,10 +115,13 @@ export default function HomePage() {
             {/* Action panel */}
             <div className="space-y-6">
               <div>
-                <p className="text-sm uppercase tracking-widest text-primary-600 font-semibold mb-2">Community Charity Event</p>
+                <div className="flex items-center gap-3 mb-3">
+                  <Image src="/logo-nortex.jpg" alt="NorTex Society" width={48} height={48} className="rounded-lg object-cover shadow" />
+                  <span className="text-sm uppercase tracking-widest text-primary-600 font-bold">NorTex Society Presents</span>
+                </div>
                 <h2 className="text-4xl font-bold text-gray-900 font-serif mb-4">Join Us on the Course</h2>
                 <p className="text-gray-600 text-lg leading-relaxed">
-                  Rockwood Park Golf Course is hosting its annual Charity Golf Tournament on <strong>Saturday, June 20, 2026</strong>. All proceeds support local Fort Worth charities and community programs.
+                  NorTex Society is proud to host its Charity Golf Tournament on <strong>Saturday, June 20, 2026</strong> at Rockwood Park Golf Course in Fort Worth. All proceeds support local charities and community programs.
                 </p>
               </div>
 
