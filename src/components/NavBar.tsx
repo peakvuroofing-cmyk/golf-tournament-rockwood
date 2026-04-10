@@ -23,7 +23,7 @@ export function NavBar() {
     href === '/' ? pathname === '/' : pathname.startsWith(href);
 
   return (
-    <header className="bg-gradient-to-r from-navy via-secondary-800 to-secondary-900 text-white shadow-lg relative z-50">
+    <header className="bg-secondary-900 border-b border-secondary-700 text-white shadow-lg relative z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
@@ -37,7 +37,7 @@ export function NavBar() {
             />
             <div className="hidden sm:block">
               <h1 className="text-sm font-bold text-white tracking-wide">NORTEX SOCIETY</h1>
-              <p className="text-xs text-primary-200">Charity Golf Tournament</p>
+              <p className="text-xs text-primary-400">1st Annual Charity Golf Tournament</p>
             </div>
           </Link>
 
@@ -49,8 +49,8 @@ export function NavBar() {
                 href={link.href}
                 className={`px-3 py-2 rounded-lg font-medium transition-colors text-sm whitespace-nowrap ${
                   isActive(link.href)
-                    ? 'bg-white/15 text-white'
-                    : 'text-primary-100 hover:text-white hover:bg-white/10'
+                    ? 'bg-primary-500/20 text-primary-400 border border-primary-500/40'
+                    : 'text-secondary-300 hover:text-primary-400 hover:bg-secondary-800'
                 }`}
               >
                 {link.label}
@@ -58,10 +58,10 @@ export function NavBar() {
             ))}
             <Link
               href="/register"
-              className={`ml-3 px-5 py-2 font-semibold rounded-lg transition-colors text-sm whitespace-nowrap ${
+              className={`ml-3 px-5 py-2 font-bold rounded-lg transition-colors text-sm whitespace-nowrap ${
                 isActive('/register')
-                  ? 'bg-primary-700 text-white ring-2 ring-white/30'
-                  : 'bg-primary-600 hover:bg-primary-700 text-white'
+                  ? 'bg-primary-400 text-secondary-900'
+                  : 'bg-primary-500 hover:bg-primary-400 text-secondary-900'
               }`}
             >
               Register
@@ -72,13 +72,13 @@ export function NavBar() {
           <div className="flex items-center space-x-3 lg:hidden">
             <Link
               href="/register"
-              className="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors text-sm"
+              className="px-4 py-2 bg-primary-500 hover:bg-primary-400 text-secondary-900 font-bold rounded-lg transition-colors text-sm"
             >
               Register
             </Link>
             <button
               onClick={() => setOpen(!open)}
-              className="p-2 rounded-lg hover:bg-secondary-700 transition-colors"
+              className="p-2 rounded-lg hover:bg-secondary-800 transition-colors text-secondary-300 hover:text-primary-400"
               aria-label="Toggle menu"
             >
               {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -89,7 +89,7 @@ export function NavBar() {
 
       {/* Mobile dropdown */}
       {open && (
-        <div className="lg:hidden bg-secondary-900 border-t border-secondary-700">
+        <div className="lg:hidden bg-secondary-900 border-t border-secondary-700/50">
           <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col space-y-1">
             {navLinks.map((link) => (
               <Link
@@ -98,8 +98,8 @@ export function NavBar() {
                 onClick={() => setOpen(false)}
                 className={`px-4 py-3 rounded-lg font-medium transition-colors ${
                   isActive(link.href)
-                    ? 'bg-white/15 text-white'
-                    : 'text-primary-100 hover:text-white hover:bg-white/10'
+                    ? 'bg-primary-500/20 text-primary-400 border border-primary-500/40'
+                    : 'text-secondary-300 hover:text-primary-400 hover:bg-secondary-800'
                 }`}
               >
                 {link.label}
