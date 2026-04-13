@@ -339,30 +339,14 @@ export default function HomePage() {
 
       {/* ── FINAL CTA ────────────────────────────────────────────────────── */}
       <div className="bg-primary-500 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-3 items-center gap-8">
-            <div className="flex justify-center">
-              <div className="bg-white rounded-xl p-4 shadow-lg">
-                <Image src="/sponsor-ktr-fences.jpg" alt="KTR Fences" width={140} height={140} className="object-contain rounded-lg" />
-                <p className="text-center text-gray-600 text-xs mt-2 font-semibold">Tournament Sponsor</p>
-              </div>
-            </div>
-            <div className="text-center">
-              <Image src="/logo-nortex-crest.png" alt="NorTex Society" width={90} height={90} className="object-contain mx-auto mb-4" />
-              <h2 className="text-3xl font-extrabold text-secondary-900 mb-2 font-serif">Ready to Tee Off?</h2>
-              <p className="text-secondary-800 mb-6 max-w-sm mx-auto">Limited spots for our <strong>First Annual</strong> tournament. Secure your place today.</p>
-              <Link href="/register"
-                className="inline-block px-10 py-4 bg-secondary-900 hover:bg-secondary-800 text-primary-400 font-extrabold text-lg rounded-2xl transition-all hover:scale-105 shadow-lg">
-                REGISTER NOW
-              </Link>
-            </div>
-            <div className="flex justify-center">
-              <div className="bg-white rounded-xl p-4 shadow-lg">
-                <Image src="/sponsor-peakvu.jpg" alt="PeakVu Property Services" width={140} height={140} className="object-contain rounded-lg" />
-                <p className="text-center text-gray-600 text-xs mt-2 font-semibold">Tournament Sponsor</p>
-              </div>
-            </div>
-          </div>
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Image src="/logo-nortex-crest.png" alt="NorTex Society" width={90} height={90} className="object-contain mx-auto mb-4" />
+          <h2 className="text-3xl font-extrabold text-secondary-900 mb-2 font-serif">Ready to Tee Off?</h2>
+          <p className="text-secondary-800 mb-6 max-w-sm mx-auto">Limited spots for our <strong>First Annual</strong> tournament. Secure your place today.</p>
+          <Link href="/register"
+            className="inline-block px-10 py-4 bg-secondary-900 hover:bg-secondary-800 text-primary-400 font-extrabold text-lg rounded-2xl transition-all hover:scale-105 shadow-lg">
+            REGISTER NOW
+          </Link>
         </div>
       </div>
 
