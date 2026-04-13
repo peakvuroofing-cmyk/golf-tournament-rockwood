@@ -46,9 +46,9 @@ export default function AboutPage() {
               height={100}
               className="object-contain mb-6"
             />
-            <p className="text-sm uppercase tracking-widest text-primary-300 mb-3">Fort Worth, Texas</p>
+            <p className="text-sm uppercase tracking-widest text-primary-400 mb-3">Fort Worth, Texas</p>
             <h1 className="text-4xl sm:text-5xl font-bold font-serif mb-4">About NorTex Society</h1>
-            <p className="text-primary-100 text-lg max-w-2xl">
+            <p className="text-primary-300 text-lg max-w-2xl">
               A North Texas community organization dedicated to empowering local youth through sports
             </p>
           </div>
@@ -95,9 +95,9 @@ export default function AboutPage() {
         {/* What We Fund */}
         <div className="bg-gradient-to-r from-navy to-secondary-900 text-white rounded-3xl p-10 mb-20">
           <div className="text-center mb-10">
-            <p className="text-sm uppercase tracking-widest text-primary-300 mb-2">Our Impact</p>
+            <p className="text-sm uppercase tracking-widest text-primary-400 mb-2">Our Impact</p>
             <h2 className="text-3xl font-bold font-serif">We Fund Local Kids&apos; Sports</h2>
-            <p className="text-primary-100 mt-3 max-w-2xl mx-auto">
+            <p className="text-secondary-300 mt-3 max-w-2xl mx-auto">
               Every sport, every kid, every community. NorTex Society donates to youth athletic programs of all kinds across Fort Worth and Tarrant County, TX.
             </p>
           </div>

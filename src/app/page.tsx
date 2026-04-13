@@ -15,12 +15,12 @@ export default function HomePage() {
           <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-primary-600 opacity-10 rounded-full blur-[100px]" />
         </div>
 
-        {/* Corner venue logos */}
-        <div className="absolute top-4 left-4 z-10 opacity-40 hover:opacity-70 transition-opacity">
-          <Image src="/logo-rockwood.png" alt="Rockwood Park Golf Course" width={200} height={80} className="object-contain" style={{ filter: 'invert(1)' }} />
-        </div>
-        <div className="absolute top-4 right-4 z-10 opacity-40 hover:opacity-70 transition-opacity">
+        {/* Corner venue logos — Fort Worth Golf on LEFT, Rockwood on RIGHT */}
+        <div className="absolute top-4 left-4 z-10 opacity-50 hover:opacity-80 transition-opacity">
           <Image src="/logo-fortworthgolf.png" alt="Fort Worth Golf" width={200} height={80} className="object-contain" />
+        </div>
+        <div className="absolute top-4 right-4 z-10 opacity-50 hover:opacity-80 transition-opacity">
+          <Image src="/logo-rockwood.png" alt="Rockwood Park Golf Course" width={200} height={80} className="object-contain" style={{ filter: 'invert(1)' }} />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 lg:pt-32 lg:pb-28">
@@ -33,10 +33,16 @@ export default function HomePage() {
                 ⭐ First Annual Event · 2026
               </div>
 
-              {/* NorTex + Title */}
-              <div className="flex items-center gap-4 justify-center lg:justify-start mb-4">
-                <Image src="/logo-nortex-crest.png" alt="NorTex Society" width={72} height={72} className="object-contain drop-shadow-lg" />
-                <span className="text-primary-400 font-bold text-lg tracking-widest uppercase">NorTex Society</span>
+              {/* NorTex Crest — large, matching logo prominence */}
+              <div className="flex items-center gap-5 justify-center lg:justify-start mb-5">
+                <Image
+                  src="/logo-nortex-crest.png"
+                  alt="NorTex Society"
+                  width={150}
+                  height={150}
+                  className="object-contain drop-shadow-2xl"
+                />
+                <span className="text-primary-400 font-bold text-xl tracking-widest uppercase">NorTex Society</span>
               </div>
 
               <h1 className="text-5xl lg:text-6xl font-extrabold mb-3 leading-tight font-serif">
@@ -124,7 +130,7 @@ export default function HomePage() {
             <div className="space-y-6 text-white">
               <div>
                 <div className="flex items-center gap-3 mb-3">
-                  <Image src="/logo-nortex-crest.png" alt="NorTex Society" width={48} height={48} className="object-contain" />
+                  <Image src="/logo-nortex-crest.png" alt="NorTex Society" width={56} height={56} className="object-contain" />
                   <span className="text-primary-400 text-sm uppercase tracking-widest font-bold">NorTex Society Presents</span>
                 </div>
                 <h2 className="text-4xl font-bold font-serif mb-2">
@@ -342,7 +348,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="text-center">
-              <Image src="/logo-nortex-crest.png" alt="NorTex Society" width={80} height={80} className="object-contain mx-auto mb-4" />
+              <Image src="/logo-nortex-crest.png" alt="NorTex Society" width={90} height={90} className="object-contain mx-auto mb-4" />
               <h2 className="text-3xl font-extrabold text-secondary-900 mb-2 font-serif">Ready to Tee Off?</h2>
               <p className="text-secondary-800 mb-6 max-w-sm mx-auto">Limited spots for our <strong>First Annual</strong> tournament. Secure your place today.</p>
               <Link href="/register"

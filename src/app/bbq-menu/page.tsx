@@ -13,9 +13,9 @@ export default function BBQMenuPage() {
       {/* Header */}
       <div className="bg-gradient-to-r from-navy via-secondary-800 to-secondary-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm uppercase tracking-widest text-primary-300 mb-3">Included with Registration</p>
+          <p className="text-sm uppercase tracking-widest text-primary-400 mb-3">Included with Registration</p>
           <h1 className="text-4xl sm:text-5xl font-bold font-serif mb-4">Tournament BBQ Menu</h1>
-          <p className="text-primary-100 text-lg max-w-xl mx-auto">A delicious catered BBQ lunch is included with every registration</p>
+          <p className="text-secondary-300 text-lg max-w-xl mx-auto">A delicious catered BBQ lunch is included with every registration</p>
         </div>
       </div>
 
@@ -23,10 +23,10 @@ export default function BBQMenuPage() {
         {/* Menu Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {menuItems.map((item) => (
-            <div key={item.name} className="bg-gradient-to-br from-secondary-50 to-primary-50 rounded-2xl p-6 shadow ring-1 ring-primary-100 hover:shadow-lg transition-shadow">
+            <div key={item.name} className="bg-gradient-to-br from-secondary-800 to-secondary-700 rounded-2xl p-6 shadow ring-1 ring-primary-500/20 hover:shadow-lg transition-shadow">
               <div className="text-4xl mb-3">{item.icon}</div>
-              <h3 className="font-bold text-gray-900 text-lg mb-2">{item.name}</h3>
-              <p className="text-gray-600 text-sm">{item.desc}</p>
+              <h3 className="font-bold text-white text-lg mb-2">{item.name}</h3>
+              <p className="text-secondary-300 text-sm">{item.desc}</p>
             </div>
           ))}
         </div>

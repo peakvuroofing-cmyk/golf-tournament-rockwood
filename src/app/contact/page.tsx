@@ -7,9 +7,9 @@ export default function ContactPage() {
       {/* Header */}
       <div className="bg-gradient-to-r from-navy via-secondary-800 to-secondary-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm uppercase tracking-widest text-primary-300 mb-3">Get in Touch</p>
+          <p className="text-sm uppercase tracking-widest text-primary-400 mb-3">Get in Touch</p>
           <h1 className="text-4xl sm:text-5xl font-bold font-serif mb-4">Contact NorTex Society</h1>
-          <p className="text-primary-100 text-lg max-w-xl mx-auto">
+          <p className="text-secondary-300 text-lg max-w-xl mx-auto">
             Questions about registration, sponsorship, or the event? We&apos;d love to hear from you.
           </p>
         </div>
@@ -19,41 +19,41 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {/* Contact Cards */}
           <div className="space-y-5">
-            <div className="bg-gradient-to-br from-secondary-50 to-primary-50 rounded-2xl p-6 shadow ring-1 ring-primary-100 flex items-start gap-4">
-              <div className="bg-primary-600 text-white rounded-xl p-3 shrink-0"><MapPin className="w-6 h-6" /></div>
+            <div className="bg-secondary-800 border border-secondary-700 rounded-2xl p-6 shadow flex items-start gap-4">
+              <div className="bg-primary-500 text-secondary-900 rounded-xl p-3 shrink-0"><MapPin className="w-6 h-6" /></div>
               <div>
-                <h3 className="font-bold text-gray-900 mb-1">Location</h3>
-                <p className="text-gray-700">Rockwood Park Golf Course</p>
-                <p className="text-gray-600 text-sm">1851 Jacksboro Hwy, Fort Worth, TX 76114</p>
+                <h3 className="font-bold text-white mb-1">Location</h3>
+                <p className="text-secondary-300">Rockwood Park Golf Course</p>
+                <p className="text-secondary-400 text-sm">1851 Jacksboro Hwy, Fort Worth, TX 76114</p>
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-secondary-50 to-primary-50 rounded-2xl p-6 shadow ring-1 ring-primary-100 flex items-start gap-4">
-              <div className="bg-primary-600 text-white rounded-xl p-3 shrink-0"><Phone className="w-6 h-6" /></div>
+            <div className="bg-secondary-800 border border-secondary-700 rounded-2xl p-6 shadow flex items-start gap-4">
+              <div className="bg-primary-500 text-secondary-900 rounded-xl p-3 shrink-0"><Phone className="w-6 h-6" /></div>
               <div>
-                <h3 className="font-bold text-gray-900 mb-1">Phone</h3>
-                <p className="text-gray-700">(817) 392-6560</p>
-                <p className="text-gray-500 text-sm">Pro shop during business hours</p>
+                <h3 className="font-bold text-white mb-1">Phone</h3>
+                <p className="text-secondary-300">(817) 392-6560</p>
+                <p className="text-secondary-400 text-sm">Pro shop during business hours</p>
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-secondary-50 to-primary-50 rounded-2xl p-6 shadow ring-1 ring-primary-100 flex items-start gap-4">
-              <div className="bg-primary-600 text-white rounded-xl p-3 shrink-0"><Mail className="w-6 h-6" /></div>
+            <div className="bg-secondary-800 border border-secondary-700 rounded-2xl p-6 shadow flex items-start gap-4">
+              <div className="bg-primary-500 text-secondary-900 rounded-xl p-3 shrink-0"><Mail className="w-6 h-6" /></div>
               <div>
-                <h3 className="font-bold text-gray-900 mb-1">Email</h3>
-                <a href="mailto:info@rockwoodgolftournament.com" className="text-primary-600 hover:text-primary-700 font-medium">
+                <h3 className="font-bold text-white mb-1">Email</h3>
+                <a href="mailto:info@rockwoodgolftournament.com" className="text-primary-400 hover:text-primary-300 font-medium">
                   info@rockwoodgolftournament.com
                 </a>
-                <p className="text-gray-500 text-sm mt-0.5">We respond within 24 hours</p>
+                <p className="text-secondary-400 text-sm mt-0.5">We respond within 24 hours</p>
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-secondary-50 to-primary-50 rounded-2xl p-6 shadow ring-1 ring-primary-100 flex items-start gap-4">
-              <div className="bg-primary-600 text-white rounded-xl p-3 shrink-0"><Clock className="w-6 h-6" /></div>
+            <div className="bg-secondary-800 border border-secondary-700 rounded-2xl p-6 shadow flex items-start gap-4">
+              <div className="bg-primary-500 text-secondary-900 rounded-xl p-3 shrink-0"><Clock className="w-6 h-6" /></div>
               <div>
-                <h3 className="font-bold text-gray-900 mb-1">Tournament Day</h3>
-                <p className="text-gray-700">Saturday, June 20, 2026</p>
-                <p className="text-gray-600 text-sm">Registration 7:00 AM · Shotgun Start 8:00 AM</p>
+                <h3 className="font-bold text-white mb-1">Tournament Day</h3>
+                <p className="text-secondary-300">Saturday, June 20, 2026</p>
+                <p className="text-secondary-400 text-sm">Registration 7:00 AM · Shotgun Start 8:00 AM</p>
               </div>
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function ContactPage() {
           {/* Quick Links */}
           <div className="space-y-5">
             <div className="bg-gradient-to-r from-navy to-secondary-900 text-white rounded-2xl p-8">
-              <h3 className="text-xl font-bold mb-6 text-primary-300">Quick Links</h3>
+              <h3 className="text-xl font-bold mb-6 text-primary-400">Quick Links</h3>
               <div className="space-y-3">
                 {[
                   { label: 'Register for the Tournament', href: '/register' },
@@ -76,19 +76,19 @@ export default function ContactPage() {
                     className="flex items-center justify-between p-3 bg-white/10 hover:bg-white/20 rounded-xl transition-colors group"
                   >
                     <span className="font-medium">{link.label}</span>
-                    <span className="text-primary-300 group-hover:translate-x-1 transition-transform">→</span>
+                    <span className="text-primary-400 group-hover:translate-x-1 transition-transform">→</span>
                   </Link>
                 ))}
               </div>
             </div>
 
-            <div className="bg-primary-600 text-white rounded-2xl p-6 text-center">
+            <div className="bg-primary-500 rounded-2xl p-6 text-center">
               <div className="text-3xl mb-2">⛳</div>
-              <h3 className="font-bold text-lg mb-2">Ready to Play?</h3>
-              <p className="text-primary-100 text-sm mb-4">Spots are limited — register today to secure your place.</p>
+              <h3 className="font-bold text-secondary-900 text-lg mb-2">Ready to Play?</h3>
+              <p className="text-secondary-800 text-sm mb-4">Spots are limited — register today to secure your place.</p>
               <Link
                 href="/register"
-                className="inline-block px-6 py-2.5 bg-white text-primary-700 font-bold rounded-xl hover:bg-primary-50 transition-colors"
+                className="inline-block px-6 py-2.5 bg-secondary-900 text-primary-400 font-bold rounded-xl hover:bg-secondary-800 transition-colors"
               >
                 Register Now
               </Link>

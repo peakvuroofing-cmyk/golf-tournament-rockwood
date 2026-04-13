@@ -9,20 +9,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // NorTex Gold
+        // NorTex Gold - exact hex from logo
         primary: {
-          50:  '#fdf9ed',
-          100: '#faf0cc',
-          200: '#f4dc90',
-          300: '#ecc84e',
-          400: '#e5b825',
-          500: '#c99a10',
-          600: '#a67c0c',
-          700: '#7d5d0a',
-          800: '#523d07',
-          900: '#2e2204',
+          50:  '#f9f7f2',
+          100: '#f0ebe1',
+          200: '#e2dccf',
+          300: '#d4cdbd',
+          400: '#c6bfab',
+          500: '#c3a96a',
+          600: '#b39556',
+          700: '#a38042',
+          800: '#936b2e',
+          900: '#7a541b',
         },
-        // NorTex Dark (near-black)
+        // NorTex Dark (logo background black)
         secondary: {
           50:  '#f5f5f5',
           100: '#e8e8e8',
@@ -42,8 +42,8 @@ const config: Config = {
         serif: ['Georgia', 'serif'],
       },
       backgroundImage: {
-        'gold-gradient': 'linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 60%, #2d2004 100%)',
-        'hero-pattern': 'radial-gradient(circle at 20% 50%, rgba(201,154,16,0.15) 0%, rgba(13,13,13,0.1) 100%)',
+        'gold-gradient': 'linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 60%, #1e1500 100%)',
+        'hero-pattern': 'radial-gradient(circle at 20% 50%, rgba(195,169,106,0.12) 0%, rgba(13,13,13,0.05) 100%)',
       },
     },
   },
