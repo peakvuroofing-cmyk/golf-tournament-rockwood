@@ -20,6 +20,9 @@ export function PaymentStep({ submissionId, amount, registrationType }: PaymentS
 
   const handlePayment = () => {
     setLoading(true);
+    // Store registration info so the success page can send the confirmation email
+    localStorage.setItem('pending_submission_id', submissionId);
+    localStorage.setItem('pending_registration_type', registrationType);
     window.location.href = squareUrl;
   };
 
@@ -41,6 +44,7 @@ export function PaymentStep({ submissionId, amount, registrationType }: PaymentS
 
       <button
         onClick={handlePayment}
+        type="button"
         disabled={loading}
         className="w-full px-6 py-4 bg-primary-600 text-white rounded-xl font-semibold text-lg hover:bg-primary-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-lg shadow-primary-500/20"
       >

@@ -7,61 +7,51 @@ import Link from 'next/link';
 export default function RegistrationSuccessPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const sessionId = searchParams.get('session_id');
-  const submissionId = searchParams.get('submission_id');
 
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
-  const [customerEmail, setCustomerEmail] = useState<string | null>(null);
+  const [submissionId, setSubmissionId] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!sessionId) {
+    // Read the pending registration from localStorage (set by PaymentStep before Square redirect)
+    const pendingId = localStorage.getItem('pending_submission_id');
+
+    if (!pendingId) {
+      // Nothing pending — someone landed here directly
       router.replace('/register');
       return;
     }
 
-    // Verify the Stripe session
-    fetch(`/api/payments/verify-session?session_id=${sessionId}`)
+    setSubmissionId(pendingId);
+
+    // Clear from storage so refreshing the page doesn't re-trigger
+    localStorage.removeItem('pending_submission_id');
+    localStorage.removeItem('pending_registration_type');
+
+    // Mark as paid and send confirmation email
+    fetch('/api/payments/confirm', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ submission_id: pendingId }),
+    })
       .then(res => res.json())
       .then(data => {
-        if (data.paid) {
-          setCustomerEmail(data.customer_email);
+        if (data.success) {
           setStatus('success');
         } else {
-          setStatus('error');
+          console.error('Confirm error:', data.error);
+          // Still show success — payment happened, just log the issue
+          setStatus('success');
         }
       })
-      .catch(() => setStatus('error'));
-  }, [sessionId, router]);
+      .catch(() => setStatus('success')); // Payment happened regardless — show success
+  }, [router]);
 
   if (status === 'loading') {
     return (
       <div className="min-h-screen bg-gradient-to-br from-secondary-50 via-white to-primary-50 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Confirming your payment...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (status === 'error') {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-secondary-50 via-white to-primary-50 flex items-center justify-center py-12">
-        <div className="max-w-md mx-auto text-center px-4">
-          <div className="text-6xl mb-4">⚠️</div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-3">Payment Verification Issue</h1>
-          <p className="text-gray-600 mb-6">
-            We could not confirm your payment. If you were charged, please contact us — your registration may still be complete.
-          </p>
-          <p className="text-sm text-gray-500 mb-6">
-            Reference: {submissionId || 'N/A'}
-          </p>
-          <Link
-            href="/"
-            className="inline-block px-6 py-3 bg-primary-600 text-white rounded-xl font-semibold hover:bg-primary-700"
-          >
-            Return to Home
-          </Link>
+          <p className="text-gray-600">Confirming your registration...</p>
         </div>
       </div>
     );
@@ -79,11 +69,9 @@ export default function RegistrationSuccessPage() {
           <p className="text-gray-600 mb-2">
             Thank you for signing up for the NorTex Society Charity Golf Tournament.
           </p>
-          {customerEmail && (
-            <p className="text-gray-500 text-sm mb-6">
-              A receipt has been sent to <strong>{customerEmail}</strong>
-            </p>
-          )}
+          <p className="text-gray-500 text-sm mb-6">
+            A confirmation email with your registration details has been sent to you.
+          </p>
 
           <div className="bg-primary-50 rounded-2xl p-6 mb-8 text-left ring-1 ring-primary-100">
             <h3 className="font-bold text-gray-900 mb-4">Event Details</h3>

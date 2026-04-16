@@ -1,37 +1,34 @@
 /**
- * Rockwood Golf Tournament — Google Sheets Setup Script
+ * NorTex Society Golf Tournament — Google Sheets Setup Script
  *
  * Usage:
- *   node setup-google-sheets.js path/to/service-account-key.json
+ *   node setup-google-sheets.js path/to/service-account-key.json SPREADSHEET_ID
  *
- * What this does:
- *   1. Creates a new Google Spreadsheet named "Rockwood Golf Tournament 2026"
- *   2. Creates and formats three tabs: Registrations, Payments, Audit_Log
- *   3. Adds all column headers with bold formatting
- *   4. Prints your Netlify environment variables when done
+ * Steps:
+ *   1. Go to sheets.google.com and create a blank spreadsheet
+ *   2. Name it "NorTex Society Golf Tournament 2026"
+ *   3. Share it with the service account email (Editor access)
+ *   4. Copy the spreadsheet ID from the URL (the long string between /d/ and /edit)
+ *   5. Run: node setup-google-sheets.js key.json YOUR_SPREADSHEET_ID
  */
 
 const fs = require('fs');
-const path = require('path');
 const { google } = require('googleapis');
 
-const SPREADSHEET_TITLE = 'Rockwood Golf Tournament 2026';
-
 const REGISTRATIONS_HEADERS = [
-  'Submission ID', 'Created At', 'Updated At', 'Type', 'Status',
-  'Payment Status', 'Amount ($)', 'Event Name', 'Event Date', 'Venue',
-  'Address', 'Team Name', 'First Name', 'Last Name', 'Full Name',
-  'Email', 'Phone', 'Company / Organization', 'Player Count',
+  'Submission ID', 'Created At', 'Type', 'Status',
+  'Payment Status', 'Amount ($)',
+  'First Name', 'Last Name', 'Email', 'Phone', 'Company / Organization',
+  'Team Name', 'Player Count',
   'Player 1', 'Player 2', 'Player 3', 'Player 4',
-  'Handicap 1', 'Handicap 2', 'Handicap 3', 'Handicap 4',
-  'Preferred Partners', 'Sponsor Interest', 'BBQ Choice 1',
-  'BBQ Choice 2', 'BBQ Choice 3', 'BBQ Choice 4', 'Notes',
-  'Terms Accepted', 'Source', 'Stripe Session ID',
+  'BBQ Choice 1', 'BBQ Choice 2', 'BBQ Choice 3', 'BBQ Choice 4',
+  'Preferred Partners', 'Sponsor Interest', 'Notes',
+  'Terms Accepted', 'Source',
 ];
 
 const PAYMENTS_HEADERS = [
   'Payment ID', 'Submission ID', 'Created At', 'Provider',
-  'Amount ($)', 'Currency', 'Stripe Session ID', 'Status',
+  'Amount ($)', 'Currency', 'Status',
 ];
 
 const AUDIT_LOG_HEADERS = [
@@ -40,9 +37,10 @@ const AUDIT_LOG_HEADERS = [
 
 async function main() {
   const keyFilePath = process.argv[2];
+  const spreadsheetId = process.argv[3];
 
-  if (!keyFilePath) {
-    console.error('\n❌  Usage: node setup-google-sheets.js path/to/service-account-key.json\n');
+  if (!keyFilePath || !spreadsheetId) {
+    console.error('\n❌  Usage: node setup-google-sheets.js path/to/key.json SPREADSHEET_ID\n');
     process.exit(1);
   }
 
@@ -51,51 +49,54 @@ async function main() {
     process.exit(1);
   }
 
-  let credentials;
-  try {
-    credentials = JSON.parse(fs.readFileSync(keyFilePath, 'utf8'));
-  } catch (e) {
-    console.error('\n❌  Could not parse JSON key file. Make sure it is the file downloaded from Google Cloud.\n');
-    process.exit(1);
-  }
+  const credentials = JSON.parse(fs.readFileSync(keyFilePath, 'utf8'));
 
   console.log('\n🔐  Authenticating with Google...');
 
   const auth = new google.auth.GoogleAuth({
     credentials,
-    scopes: [
-      'https://www.googleapis.com/auth/spreadsheets',
-      'https://www.googleapis.com/auth/drive',
-    ],
+    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
 
   const sheets = google.sheets({ version: 'v4', auth });
-  const drive = google.drive({ version: 'v3', auth });
 
-  // ── 1. Create the spreadsheet ──────────────────────────────────────────────
-  console.log('📊  Creating spreadsheet...');
+  // ── 1. Rename existing sheets / add new ones ───────────────────────────────
+  console.log('📊  Setting up tabs...');
 
-  const createResponse = await sheets.spreadsheets.create({
-    requestBody: {
-      properties: { title: SPREADSHEET_TITLE },
-      sheets: [
-        { properties: { title: 'Registrations', index: 0 } },
-        { properties: { title: 'Payments', index: 1 } },
-        { properties: { title: 'Audit_Log', index: 2 } },
-      ],
+  const spreadsheet = await sheets.spreadsheets.get({ spreadsheetId });
+  const existingSheets = spreadsheet.data.sheets.map(s => s.properties);
+  const firstSheetId = existingSheets[0].sheetId;
+
+  const requests = [];
+
+  // Rename Sheet1 → Registrations
+  requests.push({
+    updateSheetProperties: {
+      properties: { sheetId: firstSheetId, title: 'Registrations' },
+      fields: 'title',
     },
   });
 
-  const spreadsheetId = createResponse.data.spreadsheetId;
-  const spreadsheetUrl = createResponse.data.spreadsheetUrl;
-  const sheetIds = {};
-  for (const sheet of createResponse.data.sheets) {
-    sheetIds[sheet.properties.title] = sheet.properties.sheetId;
+  // Add Payments tab
+  requests.push({ addSheet: { properties: { title: 'Payments', index: 1 } } });
+
+  // Add Audit_Log tab
+  requests.push({ addSheet: { properties: { title: 'Audit_Log', index: 2 } } });
+
+  const batchResult = await sheets.spreadsheets.batchUpdate({
+    spreadsheetId,
+    requestBody: { requests },
+  });
+
+  // Get sheet IDs for formatting
+  const sheetIds = { Registrations: firstSheetId };
+  for (const reply of batchResult.data.replies) {
+    if (reply.addSheet) {
+      sheetIds[reply.addSheet.properties.title] = reply.addSheet.properties.sheetId;
+    }
   }
 
-  console.log(`✅  Spreadsheet created: ${spreadsheetUrl}`);
-
-  // ── 2. Add headers to each tab ─────────────────────────────────────────────
+  // ── 2. Add headers ─────────────────────────────────────────────────────────
   console.log('📝  Adding column headers...');
 
   await sheets.spreadsheets.values.batchUpdate({
@@ -110,7 +111,7 @@ async function main() {
     },
   });
 
-  // ── 3. Format headers (bold + freeze row 1) ────────────────────────────────
+  // ── 3. Format headers ──────────────────────────────────────────────────────
   console.log('🎨  Formatting headers...');
 
   const formatRequests = ['Registrations', 'Payments', 'Audit_Log'].map(tabName => {
@@ -119,7 +120,6 @@ async function main() {
       : AUDIT_LOG_HEADERS.length;
 
     return [
-      // Bold row 1
       {
         repeatCell: {
           range: {
@@ -131,15 +131,14 @@ async function main() {
           },
           cell: {
             userEnteredFormat: {
-              textFormat: { bold: true },
-              backgroundColor: { red: 0.18, green: 0.31, blue: 0.31 }, // dark green
+              textFormat: { bold: true, foregroundColor: { red: 1, green: 1, blue: 1 } },
+              backgroundColor: { red: 0.08, green: 0.08, blue: 0.08 },
               horizontalAlignment: 'CENTER',
             },
           },
           fields: 'userEnteredFormat(textFormat,backgroundColor,horizontalAlignment)',
         },
       },
-      // Freeze row 1
       {
         updateSheetProperties: {
           properties: {
@@ -149,7 +148,6 @@ async function main() {
           fields: 'gridProperties.frozenRowCount',
         },
       },
-      // Auto-resize all columns
       {
         autoResizeDimensions: {
           dimensions: {
@@ -168,33 +166,22 @@ async function main() {
     requestBody: { requests: formatRequests },
   });
 
-  // ── 4. Make spreadsheet accessible (optional: anyone with link can view) ───
-  // The service account owns it. Share it with yourself by adding your email below,
-  // or just open the URL printed at the end.
-
-  // ── 5. Print results ───────────────────────────────────────────────────────
-  console.log('\n' + '═'.repeat(60));
+  // ── 4. Print results ───────────────────────────────────────────────────────
+  console.log('\n' + '═'.repeat(65));
   console.log('✅  SETUP COMPLETE');
-  console.log('═'.repeat(60));
-  console.log('\n📋  Your Google Sheet is ready:');
-  console.log(`    ${spreadsheetUrl}\n`);
-  console.log('⚠️   IMPORTANT: Open the sheet link above and click Share →');
-  console.log(`    add your own Google account as an Editor so you can view it.\n`);
-  console.log('─'.repeat(60));
-  console.log('🔑  Add these to Netlify → Site config → Environment variables:\n');
+  console.log('═'.repeat(65));
+  console.log(`\n📋  Your sheet: https://docs.google.com/spreadsheets/d/${spreadsheetId}/edit\n`);
+  console.log('─'.repeat(65));
+  console.log('🔑  Add these 3 variables to Netlify → Site config → Environment variables:\n');
   console.log(`GOOGLE_SERVICE_ACCOUNT_EMAIL=${credentials.client_email}`);
   console.log(`GOOGLE_SPREADSHEET_ID=${spreadsheetId}`);
-  console.log('\nFor GOOGLE_PRIVATE_KEY, copy the entire value below');
-  console.log('(including the BEGIN and END lines) into Netlify:\n');
+  console.log('\nFor GOOGLE_PRIVATE_KEY — paste the entire block below into Netlify:\n');
   console.log(credentials.private_key);
-  console.log('─'.repeat(60));
-  console.log('\n📌  Netlify env var names (copy exactly):');
-  console.log('    GOOGLE_SERVICE_ACCOUNT_EMAIL');
-  console.log('    GOOGLE_PRIVATE_KEY');
-  console.log('    GOOGLE_SPREADSHEET_ID\n');
+  console.log('─'.repeat(65));
 }
 
 main().catch(err => {
   console.error('\n❌  Error:', err.message || err);
+  if (err.response?.data) console.error(JSON.stringify(err.response.data, null, 2));
   process.exit(1);
 });

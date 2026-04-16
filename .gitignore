@@ -34,3 +34,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Google service account credentials (sensitive - never commit)
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+
+# Claude local settings
+.claude/settings.local.json
