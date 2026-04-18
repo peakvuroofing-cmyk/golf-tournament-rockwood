@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Clock, Users } from 'lucide-react';
+import { MapPin, Clock, Users, Flag, Calendar, Trophy, UtensilsCrossed, Phone, Mail, Star, Check } from 'lucide-react';
 import { PhotoGallery } from '@/components/PhotoGallery';
 
 export default function HomePage() {
@@ -9,11 +9,6 @@ export default function HomePage() {
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <div className="relative overflow-hidden bg-secondary-900 text-white">
-        {/* Gold glow blobs */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary-500 opacity-10 rounded-full blur-[120px]" />
-          <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-primary-600 opacity-10 rounded-full blur-[100px]" />
-        </div>
 
         {/* Corner venue logos — Fort Worth Golf on LEFT, Rockwood on RIGHT */}
         <div className="absolute top-3 left-3 z-10 opacity-50 hover:opacity-80 transition-opacity">
@@ -30,7 +25,7 @@ export default function HomePage() {
             <div className="text-center lg:text-left">
               {/* First Annual Badge */}
               <div className="inline-flex items-center gap-2 bg-primary-500/20 border border-primary-500/50 text-primary-400 rounded-full px-5 py-2 text-sm font-bold tracking-widest uppercase mb-6">
-                ⭐ First Annual Event · 2026
+                <Star aria-hidden="true" className="h-4 w-4" /> First Annual Event · 2026
               </div>
 
               {/* NorTex Crest — large, matching logo prominence */}
@@ -45,7 +40,7 @@ export default function HomePage() {
                 <span className="text-primary-400 font-bold text-xl tracking-widest uppercase">NorTex Society</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 leading-tight font-serif">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 leading-tight font-serif tracking-tight">
                 <span className="text-white">CHARITY GOLF</span><br />
                 <span className="text-primary-400">TOURNAMENT</span>
               </h1>
@@ -55,9 +50,9 @@ export default function HomePage() {
 
               <Link
                 href="/register"
-                className="inline-block px-10 py-5 bg-primary-500 hover:bg-primary-400 text-secondary-900 font-extrabold text-xl rounded-2xl transition-all duration-300 hover:scale-105 shadow-2xl shadow-primary-500/30 tracking-wide"
+                className="inline-flex items-center gap-3 px-10 py-5 bg-primary-500 hover:bg-primary-400 text-secondary-900 font-extrabold text-xl rounded-2xl transition-all duration-300 hover:scale-105 shadow-2xl shadow-primary-500/30 tracking-wide"
               >
-                ⛳ REGISTER YOUR TEAM TODAY
+                <Flag aria-hidden="true" className="h-6 w-6" /> REGISTER YOUR TEAM TODAY
               </Link>
               <p className="mt-4 text-secondary-400 text-sm">$135 Individual · $500 Team of 4 · BBQ Included</p>
             </div>
@@ -65,7 +60,7 @@ export default function HomePage() {
             {/* Right — Pricing Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <Link href="/register" className="group bg-secondary-800 border border-secondary-700 hover:border-primary-500 rounded-2xl p-7 shadow-xl hover:shadow-primary-500/20 transition-all hover:scale-105 cursor-pointer">
-                <div className="text-4xl font-extrabold text-primary-400 mb-1">$135</div>
+                <div className="text-4xl font-extrabold text-primary-400 mb-1 tabular-nums tracking-tight">$135</div>
                 <h3 className="text-xl font-bold text-white mb-4">Individual</h3>
                 <ul className="space-y-2 text-secondary-300 text-sm mb-4">
                   <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-primary-500 rounded-full" />18 Holes of Golf</li>
@@ -76,12 +71,12 @@ export default function HomePage() {
               </Link>
 
               <Link href="/register" className="group bg-primary-500 hover:bg-primary-400 rounded-2xl p-7 shadow-xl hover:shadow-primary-500/40 transition-all hover:scale-105 cursor-pointer">
-                <div className="text-4xl font-extrabold text-secondary-900 mb-1">$500</div>
+                <div className="text-4xl font-extrabold text-secondary-900 mb-1 tabular-nums tracking-tight">$500</div>
                 <h3 className="text-xl font-bold text-secondary-900 mb-4">Team of 4</h3>
                 <ul className="space-y-2 text-secondary-800 text-sm mb-4">
                   <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-secondary-900 rounded-full" />Best Value Option</li>
                   <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-secondary-900 rounded-full" />$125 per player</li>
-                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-secondary-900 rounded-full" />Come Together 🏌️</li>
+                  <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-secondary-900 rounded-full" />Come Together</li>
                 </ul>
                 <span className="text-secondary-900 text-sm font-semibold group-hover:underline">Register →</span>
               </Link>
@@ -94,7 +89,7 @@ export default function HomePage() {
       <div className="bg-primary-500 py-10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-secondary-900 text-sm font-bold uppercase tracking-widest mb-2">Mark Your Calendar</p>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-secondary-900 font-serif mb-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-secondary-900 font-serif mb-3 tracking-tight">
             The 1st Annual NorTex Society Charity Golf Tournament
           </h2>
           <p className="text-secondary-800 text-lg max-w-2xl mx-auto mb-6">
@@ -102,13 +97,13 @@ export default function HomePage() {
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-secondary-900">
             {[
-              { icon: '📅', label: 'June 20, 2026' },
-              { icon: '📍', label: 'Rockwood Park Golf Course' },
-              { icon: '⏰', label: 'Shotgun Start 8:00 AM' },
-              { icon: '🏆', label: 'Prizes & Awards' },
+              { Icon: Calendar, label: 'June 20, 2026' },
+              { Icon: MapPin, label: 'Rockwood Park Golf Course' },
+              { Icon: Clock, label: 'Shotgun Start 8:00 AM' },
+              { Icon: Trophy, label: 'Prizes & Awards' },
             ].map((item) => (
               <div key={item.label} className="flex items-center gap-2 bg-secondary-900/10 rounded-full px-4 py-2 font-semibold text-sm">
-                <span>{item.icon}</span>{item.label}
+                <item.Icon aria-hidden="true" className="h-4 w-4" />{item.label}
               </div>
             ))}
           </div>
@@ -121,7 +116,6 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="flex justify-center">
               <div className="relative">
-                <div className="absolute inset-0 bg-primary-500 rounded-3xl blur-3xl opacity-20 scale-110" />
                 <Image src="/flyer.jpg" alt="NorTex Society First Annual Charity Golf Tournament 2026" width={460} height={640}
                   className="relative rounded-3xl shadow-2xl ring-2 ring-primary-500/30 w-full max-w-sm lg:max-w-md" />
               </div>
@@ -131,9 +125,12 @@ export default function HomePage() {
               <div>
                 <div className="flex items-center gap-3 mb-3">
                   <Image src="/logo-nortex-crest.png" alt="NorTex Society" width={56} height={56} className="object-contain" />
-                  <span className="text-primary-400 text-sm uppercase tracking-widest font-bold">NorTex Society Presents</span>
+                  <div className="inline-flex flex-col items-start gap-1.5">
+                    <span className="text-primary-400 text-sm uppercase tracking-widest font-bold">NorTex Society Presents</span>
+                    <span className="h-px w-10 bg-primary-500" />
+                  </div>
                 </div>
-                <h2 className="text-4xl font-bold font-serif mb-2">
+                <h2 className="text-4xl font-bold font-serif mb-2 tracking-tight">
                   Our <span className="text-primary-400">First Annual</span> Tournament
                 </h2>
                 <p className="text-secondary-300 text-lg leading-relaxed">
@@ -175,8 +172,11 @@ export default function HomePage() {
       {/* ── PHOTO GALLERY ────────────────────────────────────────────────── */}
       <div className="py-16 bg-secondary-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-primary-400 text-sm uppercase tracking-widest font-semibold mb-2">The Venue</p>
-          <h2 className="text-4xl font-bold text-center text-white mb-12 font-serif">Rockwood Park Golf Course</h2>
+          <div className="flex flex-col items-center gap-2 mb-2">
+            <p className="text-center text-primary-400 text-sm uppercase tracking-widest font-semibold">The Venue</p>
+            <span className="h-px w-12 bg-primary-500" />
+          </div>
+          <h2 className="text-4xl font-bold text-center text-white mb-12 font-serif tracking-tight">Rockwood Park Golf Course</h2>
           <PhotoGallery />
         </div>
       </div>
@@ -188,7 +188,7 @@ export default function HomePage() {
             <h2 className="text-4xl font-bold text-white mb-4 font-serif">About Rockwood Park</h2>
             <div className="space-y-3 text-secondary-300 text-lg leading-relaxed">
               <p>The original Rockwood Park Golf Course was opened for play in 1938 and designed by Golf Course Architect John Bredemus. In November 2015, the course underwent a $5.1 Million renovation led by John Colligan and associate Trey Kemp.</p>
-              <p>The renovation included new greens, tees, fairways, bunkering, and drainage — lengthened to play up to <span className="text-white font-semibold">7,053 yards</span> with four tee sets, playing to a <span className="text-white font-semibold">Par 72</span>.</p>
+              <p>The renovation included new greens, tees, fairways, bunkering, and drainage — lengthened to play up to <span className="text-white font-extrabold tabular-nums tracking-tight">7,053 yards</span> with four tee sets, playing to a <span className="text-white font-extrabold tabular-nums tracking-tight">Par 72</span>.</p>
               <p>Pro Shop: <span className="text-primary-400 font-semibold">(817) 392-6560</span> · 1851 Jacksboro Hwy, Fort Worth, TX 76114</p>
             </div>
           </div>
@@ -210,7 +210,7 @@ export default function HomePage() {
                   'Unsweetened Tea & Water',
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-3">
-                    <span className="text-primary-400 text-xl font-bold">✓</span>
+                    <Check aria-hidden="true" className="h-5 w-5 text-primary-400 shrink-0" />
                     <p className="text-white font-medium">{item}</p>
                   </div>
                 ))}
@@ -244,16 +244,19 @@ export default function HomePage() {
       {/* ── WHAT'S INCLUDED ──────────────────────────────────────────────── */}
       <div className="py-16 bg-secondary-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-primary-400 text-sm uppercase tracking-widest font-semibold mb-2">Every Registration Includes</p>
-          <h2 className="text-4xl font-bold text-center text-white mb-12 font-serif">What&apos;s Included</h2>
+          <div className="flex flex-col items-center gap-2 mb-2">
+            <p className="text-center text-primary-400 text-sm uppercase tracking-widest font-semibold">Every Registration Includes</p>
+            <span className="h-px w-12 bg-primary-500" />
+          </div>
+          <h2 className="text-4xl font-bold text-center text-white mb-12 font-serif tracking-tight">What&apos;s Included</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: '⛳', title: '18 Holes of Golf', desc: 'Championship course shotgun start format' },
-              { icon: '🏆', title: 'Prizes & Awards', desc: 'Compete for amazing prizes and recognition' },
-              { icon: '🍖', title: 'Catered BBQ Lunch', desc: 'Full BBQ spread included with every registration' },
+              { Icon: Flag, title: '18 Holes of Golf', desc: 'Championship course shotgun start format' },
+              { Icon: Trophy, title: 'Prizes & Awards', desc: 'Compete for amazing prizes and recognition' },
+              { Icon: UtensilsCrossed, title: 'Catered BBQ Lunch', desc: 'Full BBQ spread included with every registration' },
             ].map((item) => (
               <div key={item.title} className="bg-secondary-700 border border-secondary-600 hover:border-primary-500 rounded-2xl p-8 text-center transition-colors">
-                <div className="text-5xl mb-4">{item.icon}</div>
+                <div className="flex justify-center mb-4"><item.Icon aria-hidden="true" className="h-8 w-8 text-primary-400" /></div>
                 <h3 className="font-bold text-lg text-white mb-2">{item.title}</h3>
                 <p className="text-secondary-300 text-sm">{item.desc}</p>
               </div>
@@ -323,12 +326,12 @@ export default function HomePage() {
           <p className="text-secondary-300 mb-10">Questions about registration, sponsorship, or the event? We&apos;d love to hear from you.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: '📍', title: 'Location', lines: ['Rockwood Park Golf Course', '1851 Jacksboro Hwy', 'Fort Worth, TX 76114'] },
-              { icon: '📞', title: 'Phone', lines: ['(817) 392-6560', 'Pro Shop'] },
-              { icon: '✉️', title: 'Email', lines: ['info@rockwoodgolftournament.com'] },
+              { Icon: MapPin, title: 'Location', lines: ['Rockwood Park Golf Course', '1851 Jacksboro Hwy', 'Fort Worth, TX 76114'] },
+              { Icon: Phone, title: 'Phone', lines: ['(817) 392-6560', 'Pro Shop'] },
+              { Icon: Mail, title: 'Email', lines: ['info@rockwoodgolftournament.com'] },
             ].map((card) => (
               <div key={card.title} className="bg-secondary-800 border border-secondary-700 rounded-2xl p-6 hover:border-primary-500 transition-colors">
-                <div className="text-3xl mb-3">{card.icon}</div>
+                <div className="mb-3"><card.Icon aria-hidden="true" className="h-6 w-6 text-primary-400" /></div>
                 <h3 className="font-bold text-white mb-2">{card.title}</h3>
                 {card.lines.map(l => <p key={l} className="text-secondary-300 text-sm">{l}</p>)}
               </div>

@@ -36,7 +36,7 @@ export default function AboutPage() {
       </div>
 
       {/* Header */}
-      <div className="bg-gradient-to-r from-navy via-secondary-800 to-secondary-900 text-white py-16">
+      <div className="bg-[#0f0f0f] text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center text-center">
             <Image
@@ -46,8 +46,11 @@ export default function AboutPage() {
               height={100}
               className="object-contain mb-6"
             />
-            <p className="text-sm uppercase tracking-widest text-primary-400 mb-3">Fort Worth, Texas</p>
-            <h1 className="text-4xl sm:text-5xl font-bold font-serif mb-4">About NorTex Society</h1>
+            <div className="inline-flex flex-col items-center gap-2 mb-3">
+              <p className="text-sm uppercase tracking-widest text-primary-400">Fort Worth, Texas</p>
+              <span className="h-px w-12 bg-primary-500" />
+            </div>
+            <h1 className="text-4xl sm:text-5xl font-bold font-serif mb-4 tracking-tight">About NorTex Society</h1>
             <p className="text-primary-300 text-lg max-w-2xl">
               A North Texas community organization dedicated to empowering local youth through sports
             </p>
@@ -82,7 +85,7 @@ export default function AboutPage() {
               { icon: <Users className="w-8 h-8" />, label: 'Who We Help', value: 'Local Kids', desc: 'All youth sports — football, soccer, baseball, basketball & more' },
               { icon: <Trophy className="w-8 h-8" />, label: 'Fundraiser', value: 'Annual Golf Tournament', desc: 'Rockwood Park Golf Course — June 20, 2026' },
             ].map((item) => (
-              <div key={item.label} className="bg-gradient-to-br from-primary-50 to-secondary-50 rounded-2xl p-5 shadow ring-1 ring-primary-100">
+              <div key={item.label} className="bg-[#fafaf7] rounded-2xl p-5 shadow ring-1 ring-primary-100">
                 <div className="text-primary-600 mb-3">{item.icon}</div>
                 <p className="text-xs uppercase tracking-wide text-primary-600 font-semibold mb-1">{item.label}</p>
                 <p className="font-bold text-gray-900 text-sm mb-1">{item.value}</p>
@@ -93,7 +96,7 @@ export default function AboutPage() {
         </div>
 
         {/* What We Fund */}
-        <div className="bg-gradient-to-r from-navy to-secondary-900 text-white rounded-3xl p-10 mb-20">
+        <div className="bg-[#0f0f0f] text-white rounded-3xl p-10 mb-20">
           <div className="text-center mb-10">
             <p className="text-sm uppercase tracking-widest text-primary-400 mb-2">Our Impact</p>
             <h2 className="text-3xl font-bold font-serif">We Fund Local Kids&apos; Sports</h2>
@@ -102,17 +105,9 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 text-center">
-            {[
-              { icon: '🏈', sport: 'Football' },
-              { icon: '⚽', sport: 'Soccer' },
-              { icon: '⚾', sport: 'Baseball' },
-              { icon: '🏀', sport: 'Basketball' },
-              { icon: '🎾', sport: 'Tennis' },
-              { icon: '🏃', sport: 'Track & Field' },
-            ].map((s) => (
-              <div key={s.sport} className="bg-white/10 rounded-2xl p-4 hover:bg-white/20 transition-colors">
-                <div className="text-4xl mb-2">{s.icon}</div>
-                <p className="font-semibold text-sm">{s.sport}</p>
+            {['Football', 'Soccer', 'Baseball', 'Basketball', 'Tennis', 'Track & Field'].map((sport) => (
+              <div key={sport} className="bg-white/10 rounded-2xl p-4 hover:bg-white/20 transition-colors">
+                <p className="font-semibold text-sm">{sport}</p>
               </div>
             ))}
           </div>
@@ -125,7 +120,7 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-6 font-serif">The Charity Golf Tournament</h2>
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>
-                The <strong>NorTex Society Charity Golf Tournament</strong> is held at the historic <strong>Rockwood Park Golf Course</strong> — a Fort Worth landmark opened in 1938 and renovated in 2015 with a $5.1 million redesign. The course plays up to 7,053 yards at Par 72 with stunning views of the Fort Worth skyline.
+                The <strong>NorTex Society Charity Golf Tournament</strong> is held at the historic <strong>Rockwood Park Golf Course</strong> — a Fort Worth landmark opened in 1938 and renovated in 2015 with a $5.1 million redesign. The course plays up to <span className="font-extrabold tabular-nums tracking-tight">7,053 yards</span> at <span className="font-extrabold tabular-nums tracking-tight">Par 72</span> with stunning views of the Fort Worth skyline.
               </p>
               <p>
                 Join us <strong>Saturday, June 20, 2026</strong> for 18 holes, a catered BBQ lunch, prizes, and community. Whether you register as an individual or bring a team of 4, you&apos;re directly funding youth sports in your community.

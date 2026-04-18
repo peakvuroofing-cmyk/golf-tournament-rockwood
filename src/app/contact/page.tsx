@@ -1,14 +1,17 @@
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Flag } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <div className="bg-gradient-to-r from-navy via-secondary-800 to-secondary-900 text-white py-16">
+      <div className="bg-[#0f0f0f] text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-sm uppercase tracking-widest text-primary-400 mb-3">Get in Touch</p>
-          <h1 className="text-4xl sm:text-5xl font-bold font-serif mb-4">Contact NorTex Society</h1>
+          <div className="inline-flex flex-col items-center gap-2 mb-3">
+            <p className="text-sm uppercase tracking-widest text-primary-400">Get in Touch</p>
+            <span className="h-px w-12 bg-primary-500" />
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-bold font-serif mb-4 tracking-tight">Contact NorTex Society</h1>
           <p className="text-secondary-300 text-lg max-w-xl mx-auto">
             Questions about registration, sponsorship, or the event? We&apos;d love to hear from you.
           </p>
@@ -60,7 +63,7 @@ export default function ContactPage() {
 
           {/* Quick Links */}
           <div className="space-y-5">
-            <div className="bg-gradient-to-r from-navy to-secondary-900 text-white rounded-2xl p-8">
+            <div className="bg-[#0f0f0f] text-white rounded-2xl p-8">
               <h3 className="text-xl font-bold mb-6 text-primary-400">Quick Links</h3>
               <div className="space-y-3">
                 {[
@@ -83,7 +86,7 @@ export default function ContactPage() {
             </div>
 
             <div className="bg-primary-500 rounded-2xl p-6 text-center">
-              <div className="text-3xl mb-2">⛳</div>
+              <div className="flex justify-center mb-2"><Flag aria-hidden="true" className="h-8 w-8 text-secondary-900" strokeWidth={1.75} /></div>
               <h3 className="font-bold text-secondary-900 text-lg mb-2">Ready to Play?</h3>
               <p className="text-secondary-800 text-sm mb-4">Spots are limited — register today to secure your place.</p>
               <Link

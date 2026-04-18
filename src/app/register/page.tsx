@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { CheckCircle2 } from 'lucide-react';
 import { RegistrationTypeToggle } from '@/components/RegistrationTypeToggle';
 import { IndividualForm } from '@/components/IndividualForm';
 import { TeamForm } from '@/components/TeamForm';
@@ -215,11 +216,12 @@ export default function RegisterPage() {
       case 'type':
         return (
           <div className="max-w-4xl mx-auto">
-            <div className="overflow-hidden rounded-[2rem] bg-gradient-to-r from-primary-600 via-secondary-600 to-navy p-10 shadow-2xl ring-1 ring-white/20 text-white mb-10">
-              <p className="uppercase tracking-[0.25em] text-sm text-primary-200 mb-4">
-                NorTex Society Golf Tournament
-              </p>
-              <h1 className="text-4xl sm:text-5xl font-semibold mb-4">Register for the Tournament</h1>
+            <div className="overflow-hidden rounded-[2rem] bg-[#0f0f0f] p-10 shadow-2xl ring-1 ring-white/10 text-white mb-10">
+              <div className="inline-flex flex-col items-start gap-1.5 mb-4">
+                <p className="uppercase tracking-[0.25em] text-sm text-primary-200">NorTex Society Golf Tournament</p>
+                <span className="h-px w-10 bg-primary-500" />
+              </div>
+              <h1 className="text-4xl sm:text-5xl font-semibold mb-4 tracking-tight">Register for the Tournament</h1>
               <p className="text-lg text-primary-100 max-w-3xl mb-8">
                 Join us Saturday, June 20, 2026 at Rockwood Park Golf Course for a memorable day of golf, BBQ, prizes, and community support.
               </p>
@@ -258,10 +260,13 @@ export default function RegisterPage() {
       case 'form':
         return (
           <div className="max-w-7xl mx-auto">
-            <div className="mb-8 flex items-center justify-between rounded-3xl bg-gradient-to-r from-primary-600 via-secondary-600 to-navy p-8 text-white shadow-2xl ring-1 ring-white/10">
+            <div className="mb-8 flex items-center justify-between rounded-3xl bg-[#0f0f0f] p-8 text-white shadow-2xl ring-1 ring-white/10">
               <div>
-                <p className="text-sm uppercase tracking-[0.3em] text-primary-200 mb-2">Ready to register?</p>
-                <h2 className="text-3xl font-semibold mb-2">Complete your entry</h2>
+                <div className="inline-flex flex-col items-start gap-1.5 mb-2">
+                  <p className="text-sm uppercase tracking-[0.3em] text-primary-200">Ready to register?</p>
+                  <span className="h-px w-10 bg-primary-500" />
+                </div>
+                <h2 className="text-3xl font-semibold mb-2 tracking-tight">Complete your entry</h2>
                 <p className="text-primary-100 max-w-2xl">
                   Fill out the form and continue to payment. The course photos and event details are here to keep the experience premium.
                 </p>
@@ -341,8 +346,8 @@ export default function RegisterPage() {
                     <p className="text-sm font-semibold">{registrationPhotos[2].caption}</p>
                   </div>
                 </div>
-                <EventDetailsCard className="bg-gradient-to-br from-primary-50 to-secondary-50 border border-primary-100" />
-                <PricingCard className="bg-gradient-to-br from-secondary-50 to-primary-50 border border-secondary-100" />
+                <EventDetailsCard className="bg-[#fafaf7] border border-primary-100" />
+                <PricingCard className="bg-[#fafaf7] border border-secondary-100" />
               </div>
             </div>
           </div>
@@ -378,7 +383,7 @@ export default function RegisterPage() {
         return (
           <div className="max-w-2xl mx-auto text-center">
             <div className="mb-8">
-              <div className="text-6xl mb-4">✅</div>
+              <div className="flex justify-center mb-4"><CheckCircle2 aria-hidden="true" className="h-16 w-16 text-green-600" strokeWidth={1.75} /></div>
               <h1 className="text-3xl font-bold text-gray-900 mb-4">Registration Complete!</h1>
               <p className="text-gray-600 mb-6">
                 Thank you for registering for the {process.env.NEXT_PUBLIC_EVENT_NAME}.
@@ -446,7 +451,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-secondary-50 via-white to-primary-50 py-12">
+    <div className="min-h-screen bg-[#fafaf7] py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {renderStepContent()}
       </div>

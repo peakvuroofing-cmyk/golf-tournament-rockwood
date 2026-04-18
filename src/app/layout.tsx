@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { NavBar } from '@/components/NavBar'
+import { MapPin, Phone, Calendar, Clock, Flag, DollarSign, Users } from 'lucide-react'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -39,20 +40,20 @@ export default function RootLayout({
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                 <div>
                   <h3 className="font-bold text-primary-400 mb-4 uppercase tracking-widest text-sm">Event Info</h3>
-                  <p className="text-sm text-secondary-300 mb-2">📍 Rockwood Park Golf Course</p>
+                  <p className="text-sm text-secondary-300 mb-2 flex items-center gap-1.5"><MapPin aria-hidden="true" className="h-4 w-4 shrink-0" /> Rockwood Park Golf Course</p>
                   <p className="text-sm text-secondary-300 mb-2">1851 Jacksboro Hwy, Fort Worth, TX 76114</p>
-                  <p className="text-sm text-secondary-300">📞 (817) 392-6560</p>
+                  <p className="text-sm text-secondary-300 flex items-center gap-1.5"><Phone aria-hidden="true" className="h-4 w-4 shrink-0" /> (817) 392-6560</p>
                 </div>
                 <div>
                   <h3 className="font-bold text-primary-400 mb-4 uppercase tracking-widest text-sm">Schedule</h3>
-                  <p className="text-sm text-secondary-300 mb-2">📅 Saturday, June 20, 2026</p>
-                  <p className="text-sm text-secondary-300 mb-2">⏰ Registration: 7:00 AM</p>
-                  <p className="text-sm text-secondary-300">⛳ Shotgun Start: 8:00 AM</p>
+                  <p className="text-sm text-secondary-300 mb-2 flex items-center gap-1.5"><Calendar aria-hidden="true" className="h-4 w-4 shrink-0" /> Saturday, June 20, 2026</p>
+                  <p className="text-sm text-secondary-300 mb-2 flex items-center gap-1.5"><Clock aria-hidden="true" className="h-4 w-4 shrink-0" /> Registration: 7:00 AM</p>
+                  <p className="text-sm text-secondary-300 flex items-center gap-1.5"><Flag aria-hidden="true" className="h-4 w-4 shrink-0" /> Shotgun Start: 8:00 AM</p>
                 </div>
                 <div>
                   <h3 className="font-bold text-primary-400 mb-4 uppercase tracking-widest text-sm">Pricing</h3>
-                  <p className="text-sm text-secondary-300 mb-2">💵 Individual: $135</p>
-                  <p className="text-sm text-secondary-300">👥 Team of 4: $500</p>
+                  <p className="text-sm text-secondary-300 mb-2 flex items-center gap-1.5"><DollarSign aria-hidden="true" className="h-4 w-4 shrink-0" /> Individual: $135</p>
+                  <p className="text-sm text-secondary-300 flex items-center gap-1.5"><Users aria-hidden="true" className="h-4 w-4 shrink-0" /> Team of 4: $500</p>
                 </div>
               </div>
               <div className="border-t border-secondary-700 pt-6 text-center text-secondary-500 text-sm">

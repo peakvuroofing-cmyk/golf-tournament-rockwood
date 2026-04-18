@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { Lock, CreditCard, Mail } from 'lucide-react';
 
 const SQUARE_LINKS = {
   individual: 'https://square.link/u/BBm3kaNu?src=sheet',
@@ -29,7 +30,7 @@ export function PaymentStep({ submissionId, amount, registrationType }: PaymentS
   return (
     <div className="rounded-[2rem] bg-white p-8 shadow-2xl ring-1 ring-slate-200 text-center">
       <div className="mb-6">
-        <div className="text-5xl mb-4">💳</div>
+        <div className="flex justify-center mb-4"><CreditCard aria-hidden="true" className="h-12 w-12 text-primary-500" strokeWidth={1.75} /></div>
         <h3 className="text-2xl font-bold text-gray-900 mb-2">Complete Your Payment</h3>
         <p className="text-gray-500">You&apos;ll be redirected to our secure Square payment page</p>
       </div>
@@ -59,9 +60,9 @@ export function PaymentStep({ submissionId, amount, registrationType }: PaymentS
       </button>
 
       <div className="mt-5 text-sm text-gray-500 space-y-1">
-        <p>🔒 Secure payment powered by Square</p>
-        <p>💳 Visa · Mastercard · Amex · Apple Pay · Google Pay</p>
-        <p>📧 Receipt emailed to you automatically</p>
+        <p className="flex items-center justify-center gap-1.5"><Lock aria-hidden="true" className="h-4 w-4 shrink-0" /> Secure payment powered by Square</p>
+        <p className="flex items-center justify-center gap-1.5"><CreditCard aria-hidden="true" className="h-4 w-4 shrink-0" /> Visa · Mastercard · Amex · Apple Pay · Google Pay</p>
+        <p className="flex items-center justify-center gap-1.5"><Mail aria-hidden="true" className="h-4 w-4 shrink-0" /> Receipt emailed to you automatically</p>
       </div>
 
       <div className="mt-4 text-xs text-gray-400">
