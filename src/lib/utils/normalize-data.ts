@@ -1,6 +1,7 @@
 import { IndividualFormData, TeamFormData, RegistrationData } from '@/types';
 import { config } from '@/lib/config';
 import { generateSubmissionId } from './id-generator';
+import { formatDateTimeCST, formatDateCST } from './format-date';
 
 /**
  * Normalize individual form data to the unified registration structure
@@ -86,14 +87,14 @@ export function normalizeTeamData(formData: TeamFormData): Omit<RegistrationData
 export function registrationToSheetRow(registration: RegistrationData): string[] {
   return [
     registration.submission_id,
-    registration.created_at,
-    registration.updated_at,
+    formatDateTimeCST(registration.created_at),
+    formatDateTimeCST(registration.updated_at),
     registration.registration_type,
     registration.registration_status,
     registration.payment_status,
     registration.payment_amount.toString(),
     registration.event_name,
-    registration.event_date,
+    formatDateCST(registration.event_date),
     registration.venue_name,
     registration.venue_address,
     registration.team_name || '',
@@ -121,6 +122,5 @@ export function registrationToSheetRow(registration: RegistrationData): string[]
     registration.notes || '',
     registration.terms_accepted.toString(),
     registration.source_page,
-    registration.stripe_session_id || '',
   ];
 }

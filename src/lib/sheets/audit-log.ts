@@ -2,6 +2,7 @@ import { AuditLogEntry } from '@/types';
 import { config } from '@/lib/config';
 import { appendRowsToSheet } from './client';
 import { generateLogId } from '@/lib/utils/id-generator';
+import { formatDateTimeCST } from '@/lib/utils/format-date';
 
 /**
  * Log an action to the Audit_Log sheet
@@ -14,7 +15,7 @@ export async function logAction(
 ): Promise<void> {
   const logEntry: AuditLogEntry = {
     log_id: generateLogId(),
-    timestamp: new Date().toISOString(),
+    timestamp: formatDateTimeCST(new Date().toISOString()),
     action_type: actionType,
     submission_id: submissionId,
     result,

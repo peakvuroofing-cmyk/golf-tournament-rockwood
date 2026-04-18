@@ -2,6 +2,7 @@ import { RegistrationData } from '@/types';
 import { config } from '@/lib/config';
 import { appendRowsToSheet, findRowByValue, updateRowInSheet } from './client';
 import { registrationToSheetRow } from '@/lib/utils/normalize-data';
+import { formatDateTimeCST } from '@/lib/utils/format-date';
 
 /**
  * Add a new registration to the Registrations sheet
@@ -10,7 +11,7 @@ export async function addRegistration(registration: RegistrationData): Promise<v
   const row = registrationToSheetRow(registration);
   await appendRowsToSheet(
     config.google.spreadsheetId,
-    'Registrations!A:AK', // Columns A to AK (37 columns)
+    'Registrations!A:AJ', // Columns A to AJ (36 columns)
     [row]
   );
 }
@@ -21,10 +22,8 @@ export async function addRegistration(registration: RegistrationData): Promise<v
 export async function updateRegistrationStatus(
   submissionId: string,
   status: RegistrationData['registration_status'],
-  paymentStatus: RegistrationData['payment_status'],
-  stripeSessionId?: string
+  paymentStatus: RegistrationData['payment_status']
 ): Promise<void> {
-  // Find the row by submission_id (column 0)
   const result = await findRowByValue(
     config.google.spreadsheetId,
     'Registrations',
@@ -37,9 +36,7 @@ export async function updateRegistrationStatus(
   }
 
   const { rowIndex } = result;
-  // Update columns C (updated_at), E (registration_status), F (payment_status)
-  // Write updated_at in col C, skip D (registration_type), update E and F
-  const now = new Date().toISOString();
+  const now = formatDateTimeCST(new Date().toISOString());
 
   // Update registration_status (col E) and payment_status (col F)
   const statusRange = `Registrations!E${rowIndex + 1}:F${rowIndex + 1}`;
@@ -48,12 +45,6 @@ export async function updateRegistrationStatus(
   // Update updated_at (col C)
   const updatedAtRange = `Registrations!C${rowIndex + 1}`;
   await updateRowInSheet(config.google.spreadsheetId, updatedAtRange, [[now]]);
-
-  // Update stripe_session_id (col AK) if provided
-  if (stripeSessionId) {
-    const sessionRange = `Registrations!AK${rowIndex + 1}`;
-    await updateRowInSheet(config.google.spreadsheetId, sessionRange, [[stripeSessionId]]);
-  }
 }
 
 /**
@@ -125,6 +116,5 @@ export async function getRegistrationById(submissionId: string): Promise<Registr
     notes: rowData[33] || undefined,
     terms_accepted: rowData[34] === 'true',
     source_page: rowData[35],
-    stripe_session_id: rowData[36] || undefined,
   };
 }
