@@ -23,7 +23,7 @@ export function PricingCard({ className = '' }: PricingCardProps) {
             </div>
           </div>
           <div className="text-right">
-            <span className="text-2xl font-bold text-primary-600">${individualPrice}</span>
+            <span className="text-2xl font-bold text-primary-600 tabular-nums tracking-tight">${individualPrice}</span>
           </div>
         </div>
 
@@ -36,8 +36,8 @@ export function PricingCard({ className = '' }: PricingCardProps) {
             </div>
           </div>
           <div className="text-right">
-            <span className="text-2xl font-bold text-primary-600">${teamPrice}</span>
-            <p className="text-sm text-gray-600">${Math.round(teamPrice / 4)}/person</p>
+            <span className="text-2xl font-bold text-primary-600 tabular-nums tracking-tight">${teamPrice}</span>
+            <p className="text-sm text-gray-600 tabular-nums">${Math.round(teamPrice / 4)}/person</p>
           </div>
         </div>
       </div>
