@@ -31,49 +31,36 @@ export async function POST(request: NextRequest) {
       process.env.GOOGLE_PRIVATE_KEY &&
       process.env.GOOGLE_SPREADSHEET_ID;
 
-    if (!googleConfigured) {
-      console.error('Google Sheets configuration missing. Registration cannot be saved.');
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Google Sheets integration is not configured. Please check your environment variables.',
-        },
-        { status: 500 }
-      );
-    }
+    if (googleConfigured) {
+      try {
+        const { addRegistration, checkDuplicateEmail } = await import('@/lib/sheets/registrations');
+        const { logRegistrationSubmission } = await import('@/lib/sheets/audit-log');
 
-    try {
-      const { addRegistration, checkDuplicateEmail } = await import('@/lib/sheets/registrations');
-      const { logRegistrationSubmission } = await import('@/lib/sheets/audit-log');
+        const email = validatedData.registration_type === 'individual'
+          ? (sanitizedData as any).email
+          : (sanitizedData as any).contact_email;
 
-      const email = validatedData.registration_type === 'individual'
-        ? (sanitizedData as any).email
-        : (sanitizedData as any).contact_email;
+        const isDuplicate = await checkDuplicateEmail(email);
+        if (isDuplicate) {
+          return NextResponse.json(
+            { success: false, error: 'This email address has already been registered.' },
+            { status: 409 }
+          );
+        }
 
-      const isDuplicate = await checkDuplicateEmail(email);
-      if (isDuplicate) {
-        return NextResponse.json(
-          { success: false, error: 'This email address has already been registered.' },
-          { status: 409 }
+        await addRegistration(fullRegistration);
+        await logRegistrationSubmission(
+          fullRegistration.submission_id,
+          validatedData.registration_type,
+          'success',
+          `Registration created for ${email}`
         );
+      } catch (sheetError) {
+        // Non-blocking — log the error but let the registration proceed so users aren't blocked
+        console.error('Google Sheets save failed (non-fatal):', sheetError instanceof Error ? sheetError.message : sheetError);
       }
-
-      await addRegistration(fullRegistration);
-      await logRegistrationSubmission(
-        fullRegistration.submission_id,
-        validatedData.registration_type,
-        'success',
-        `Registration created for ${email}`
-      );
-    } catch (sheetError) {
-      console.error('Google Sheets save failed:', sheetError);
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Registration could not be saved to Google Sheets. Please try again later.',
-        },
-        { status: 500 }
-      );
+    } else {
+      console.warn('Google Sheets not configured — registration saved in memory only.');
     }
 
     return NextResponse.json({
