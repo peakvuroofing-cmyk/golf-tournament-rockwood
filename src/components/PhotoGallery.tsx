@@ -80,12 +80,12 @@ export function PhotoGallery() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         {ROCKWOOD_PHOTOS.map((photo, index) => (
           <div
             key={index}
             onClick={() => openModal(index)}
-            className="relative group cursor-pointer overflow-hidden rounded-[2rem] shadow-2xl transition-shadow hover:shadow-black/20"
+            className="relative group cursor-pointer overflow-hidden rounded-2xl sm:rounded-[2rem] shadow-2xl transition-shadow hover:shadow-black/20"
           >
             <Image
               src={photo.src}
@@ -93,7 +93,7 @@ export function PhotoGallery() {
               width={480}
               height={320}
               sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-              className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105"
+              className="w-full h-48 sm:h-60 lg:h-72 object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="absolute bottom-4 left-4 right-4 text-white opacity-90">
@@ -106,39 +106,43 @@ export function PhotoGallery() {
 
       {/* Modal */}
       {selectedIndex !== null && (
-        <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-2 sm:p-4">
           <button
             onClick={closeModal}
-            className="absolute top-4 right-4 p-2 hover:bg-gray-800 rounded-full transition-colors"
+            className="absolute top-3 right-3 p-3 hover:bg-gray-800 rounded-full transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+            aria-label="Close"
           >
-            <X className="w-8 h-8 text-white" />
+            <X className="w-7 h-7 text-white" />
           </button>
 
           <button
             onClick={goToPrevious}
-            className="absolute left-4 p-2 hover:bg-gray-800 rounded-full transition-colors"
+            className="absolute left-2 sm:left-4 p-3 hover:bg-gray-800 rounded-full transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+            aria-label="Previous photo"
           >
-            <ChevronLeft className="w-8 h-8 text-white" />
+            <ChevronLeft className="w-7 h-7 text-white" />
           </button>
 
-          <div className="max-w-4xl w-full">
+          <div className="max-w-4xl w-full mx-12 sm:mx-16">
             <Image
               src={ROCKWOOD_PHOTOS[selectedIndex].src}
               alt={ROCKWOOD_PHOTOS[selectedIndex].alt}
               width={800}
               height={600}
-              className="w-full h-auto rounded-lg"
+              sizes="(min-width: 1024px) 800px, 100vw"
+              className="w-full h-auto rounded-lg max-h-[75vh] object-contain"
             />
-            <p className="text-white text-center mt-4 font-semibold">
+            <p className="text-white text-center mt-3 font-semibold text-sm sm:text-base">
               {ROCKWOOD_PHOTOS[selectedIndex].title}
             </p>
           </div>
 
           <button
             onClick={goToNext}
-            className="absolute right-4 p-2 hover:bg-gray-800 rounded-full transition-colors"
+            className="absolute right-2 sm:right-4 p-3 hover:bg-gray-800 rounded-full transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+            aria-label="Next photo"
           >
-            <ChevronRight className="w-8 h-8 text-white" />
+            <ChevronRight className="w-7 h-7 text-white" />
           </button>
 
           {/* Photo counter */}

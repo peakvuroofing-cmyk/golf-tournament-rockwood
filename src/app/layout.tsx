@@ -26,8 +26,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="min-h-screen bg-secondary-900 flex flex-col">
+      <body className={`${inter.className} overflow-x-hidden`}>
+        <div className="min-h-screen bg-secondary-900 flex flex-col overflow-x-hidden">
           <NavBar />
 
           {/* Main Content */}

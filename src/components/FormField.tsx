@@ -32,12 +32,12 @@ export function FormField({
   className = '',
 }: FormFieldProps) {
   const baseInputClasses = `
-    w-full px-3 py-2 border rounded-md shadow-sm
+    w-full px-4 py-3 border rounded-md shadow-sm text-base
     focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500
     ${error ? 'border-red-300' : 'border-gray-300'}
   `;
 
-  const labelClasses = 'block text-sm font-medium text-gray-700 mb-1';
+  const labelClasses = 'block text-sm font-medium text-gray-700 mb-1.5';
   const errorClasses = 'mt-1 text-sm text-red-600';
 
   return (
@@ -77,17 +77,19 @@ export function FormField({
           ))}
         </select>
       ) : type === 'checkbox' ? (
-        <div className="flex items-center">
-          <input
-            id={name}
-            name={name}
-            type="checkbox"
-            checked={value as boolean}
-            onChange={onChange}
-            className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
-            required={required}
-          />
-          <label htmlFor={name} className="ml-2 block text-sm text-gray-900">
+        <div className="flex items-start gap-3 min-h-[44px] py-1">
+          <div className="flex items-center h-6 mt-0.5">
+            <input
+              id={name}
+              name={name}
+              type="checkbox"
+              checked={value as boolean}
+              onChange={onChange}
+              className="h-5 w-5 text-primary-600 focus:ring-primary-500 border-gray-300 rounded cursor-pointer"
+              required={required}
+            />
+          </div>
+          <label htmlFor={name} className="text-sm text-gray-900 cursor-pointer leading-relaxed">
             {placeholder || label}
           </label>
         </div>

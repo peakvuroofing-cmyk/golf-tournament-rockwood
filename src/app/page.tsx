@@ -16,11 +16,11 @@ export default function HomePage() {
         </div>
 
         {/* Corner venue logos — Fort Worth Golf on LEFT, Rockwood on RIGHT */}
-        <div className="absolute top-4 left-4 z-10 opacity-50 hover:opacity-80 transition-opacity">
-          <Image src="/logo-fortworthgolf.png" alt="Fort Worth Golf" width={200} height={80} className="object-contain" />
+        <div className="absolute top-3 left-3 z-10 opacity-50 hover:opacity-80 transition-opacity">
+          <Image src="/logo-fortworthgolf.png" alt="Fort Worth Golf" width={200} height={80} className="object-contain w-24 sm:w-36 lg:w-48 h-auto" />
         </div>
-        <div className="absolute top-4 right-4 z-10 opacity-50 hover:opacity-80 transition-opacity">
-          <Image src="/logo-rockwood.png" alt="Rockwood Park Golf Course" width={200} height={80} className="object-contain" style={{ filter: 'invert(1)' }} />
+        <div className="absolute top-3 right-3 z-10 opacity-50 hover:opacity-80 transition-opacity">
+          <Image src="/logo-rockwood.png" alt="Rockwood Park Golf Course" width={200} height={80} className="object-contain w-24 sm:w-36 lg:w-48 h-auto" style={{ filter: 'invert(1)' }} />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 lg:pt-32 lg:pb-28">
@@ -45,7 +45,7 @@ export default function HomePage() {
                 <span className="text-primary-400 font-bold text-xl tracking-widest uppercase">NorTex Society</span>
               </div>
 
-              <h1 className="text-5xl lg:text-6xl font-extrabold mb-3 leading-tight font-serif">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-3 leading-tight font-serif">
                 <span className="text-white">CHARITY GOLF</span><br />
                 <span className="text-primary-400">TOURNAMENT</span>
               </h1>
@@ -184,7 +184,7 @@ export default function HomePage() {
       {/* ── ABOUT / BBQ ──────────────────────────────────────────────────── */}
       <div id="about" className="py-16 bg-secondary-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-secondary-700 border border-secondary-600 rounded-2xl p-10">
+          <div className="bg-secondary-700 border border-secondary-600 rounded-2xl p-6 sm:p-10">
             <h2 className="text-4xl font-bold text-white mb-4 font-serif">About Rockwood Park</h2>
             <div className="space-y-3 text-secondary-300 text-lg leading-relaxed">
               <p>The original Rockwood Park Golf Course was opened for play in 1938 and designed by Golf Course Architect John Bredemus. In November 2015, the course underwent a $5.1 Million renovation led by John Colligan and associate Trey Kemp.</p>
@@ -268,7 +268,7 @@ export default function HomePage() {
           <p className="text-primary-400 text-sm uppercase tracking-widest font-semibold mb-2">Community Partners</p>
           <h2 className="text-3xl font-bold text-white mb-3 font-serif">Thank You to Our Sponsors</h2>
           <p className="text-secondary-400 mb-10 max-w-2xl mx-auto">The NorTex Society Golf Tournament is made possible by the generous support of local businesses.</p>
-          <div className="flex flex-wrap justify-center gap-6 mb-10">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-10">
             {[
               { src: '/sponsor-ktr-fences.jpg', name: 'KTR Fences' },
               { src: '/sponsor-peakvu.jpg', name: 'PeakVu Property Services' },
@@ -277,7 +277,7 @@ export default function HomePage() {
               { src: '/sponsor-globe-life.jpg', name: 'Globe Life Insurance' },
               { src: '/sponsor-baker-services.jpg', name: 'Baker Services' },
             ].map((s) => (
-              <div key={s.name} className="bg-white rounded-xl p-4 shadow-lg flex flex-col items-center w-40 hover:shadow-primary-500/20 hover:shadow-xl transition-shadow">
+              <div key={s.name} className="bg-white rounded-xl p-4 shadow-lg flex flex-col items-center w-32 sm:w-40 hover:shadow-primary-500/20 hover:shadow-xl transition-shadow">
                 <Image src={s.src} alt={s.name} width={100} height={100} className="object-contain mb-2 h-24 w-auto" style={{ mixBlendMode: 'multiply' }} />
                 <p className="font-semibold text-gray-800 text-xs text-center">{s.name}</p>
               </div>

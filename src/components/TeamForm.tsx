@@ -42,7 +42,7 @@ export function TeamForm({ formData, errors, onChange, onBlur }: TeamFormProps) 
       <div className="border-b border-gray-200 pb-4 mb-6">
         <h4 className="text-lg font-medium text-gray-900 mb-4">Contact Information</h4>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <FormField
             label="Contact First Name"
             name="contact_first_name"

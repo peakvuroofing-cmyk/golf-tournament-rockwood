@@ -37,7 +37,7 @@ export async function appendRowsToSheet(
     spreadsheetId,
     range,
     valueInputOption: 'RAW',
-    resource: {
+    requestBody: {
       values,
     },
   });
@@ -57,7 +57,7 @@ export async function updateRowInSheet(
     spreadsheetId,
     range,
     valueInputOption: 'RAW',
-    resource: {
+    requestBody: {
       values,
     },
   });
