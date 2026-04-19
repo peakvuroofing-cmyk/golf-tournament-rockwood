@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: TypeScript check
+        run: npm run type-check
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Production build
+        env:
+          # Build-time placeholders — real values live in Netlify.
+          # These satisfy the config.ts non-null assertions without leaking secrets.
+          GOOGLE_SERVICE_ACCOUNT_EMAIL: ci-placeholder@example.com
+          GOOGLE_PRIVATE_KEY: ci-placeholder
+          GOOGLE_SPREADSHEET_ID: ci-placeholder
+        run: npm run build
