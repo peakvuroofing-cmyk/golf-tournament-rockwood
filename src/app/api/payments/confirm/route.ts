@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendEmail, isEmailConfigured } from '@/lib/email/client';
-import { buildRegistrationConfirmationEmail } from '@/lib/email/templates';
+import { buildPaymentConfirmedEmail } from '@/lib/email/templates';
 
 export async function POST(request: NextRequest) {
   try {
@@ -30,9 +30,10 @@ export async function POST(request: NextRequest) {
     // Mark as paid
     await updateRegistrationStatus(submission_id, 'paid', 'paid');
 
-    // Send confirmation email
+    // Send payment-confirmed email (different from the registration-received email
+    // that fired on form submit)
     if (isEmailConfigured()) {
-      const { subject, html, text } = buildRegistrationConfirmationEmail(registration);
+      const { subject, html, text } = buildPaymentConfirmedEmail(registration);
       await sendEmail({ to: registration.contact_email, subject, html, text });
     }
 
