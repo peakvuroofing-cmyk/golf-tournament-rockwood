@@ -18,23 +18,12 @@ export const config = {
     privateKey: process.env.GOOGLE_PRIVATE_KEY!,
     spreadsheetId: process.env.GOOGLE_SPREADSHEET_ID!,
   },
-
-  // Stripe
-  stripe: {
-    secretKey: process.env.STRIPE_SECRET_KEY!,
-    publishableKey: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!,
-    webhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
-  },
 };
 
 const googleEnvVars = [
   'GOOGLE_SERVICE_ACCOUNT_EMAIL',
   'GOOGLE_PRIVATE_KEY',
   'GOOGLE_SPREADSHEET_ID',
-];
-
-const stripeEnvVars = [
-  'STRIPE_SECRET_KEY',
 ];
 
 function getMissingEnvVars(vars: string[]) {
@@ -48,15 +37,8 @@ export function validateGoogleConfig() {
   }
 }
 
-export function validateStripeConfig() {
-  const missing = getMissingEnvVars(stripeEnvVars);
-  if (missing.length > 0) {
-    throw new Error(`Missing required Stripe environment variables: ${missing.join(', ')}`);
-  }
-}
-
 export function validateConfig() {
-  const missing = getMissingEnvVars([...googleEnvVars, ...stripeEnvVars]);
+  const missing = getMissingEnvVars(googleEnvVars);
   if (missing.length > 0) {
     throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
   }

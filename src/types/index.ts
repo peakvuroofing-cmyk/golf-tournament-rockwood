@@ -36,18 +36,6 @@ export interface RegistrationData {
   notes?: string;
   terms_accepted: boolean;
   source_page: string;
-  stripe_session_id?: string;
-}
-
-export interface PaymentData {
-  payment_id: string;
-  submission_id: string;
-  created_at: string;
-  payment_provider: 'stripe';
-  amount: number;
-  currency: 'USD';
-  stripe_session_id?: string;
-  payment_status: 'pending' | 'completed' | 'failed';
 }
 
 export interface AuditLogEntry {
