@@ -48,3 +48,9 @@ next-env.d.ts
 
 # Local Netlify folder
 .netlify
+
+# Audit screenshots (dev-only)
+.audit/
+
+# .env backups from automation
+.env*.backup.*
