@@ -40,6 +40,11 @@ next-env.d.ts
 !package.json
 !package-lock.json
 !tsconfig.json
+!.mcp.json
+!.claude/settings.json
 
 # Claude local settings
 .claude/settings.local.json
+
+# Local Netlify folder
+.netlify
