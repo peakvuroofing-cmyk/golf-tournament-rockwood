@@ -68,8 +68,8 @@ export function NavBar() {
             </Link>
           </nav>
 
-          {/* Mobile: Register + Hamburger */}
-          <div className="flex items-center space-x-2 lg:hidden">
+          {/* Mobile: Register + Hamburger — lift above z-40 overlay so taps land on the button */}
+          <div className="flex items-center space-x-2 lg:hidden relative z-50">
             <Link
               href="/register"
               className="px-4 py-2.5 bg-primary-500 hover:bg-primary-400 text-secondary-900 font-bold rounded-lg transition-colors text-sm min-h-[44px] flex items-center"
@@ -80,6 +80,8 @@ export function NavBar() {
               onClick={() => setOpen(!open)}
               className="p-3 rounded-lg hover:bg-secondary-800 transition-colors text-secondary-300 hover:text-primary-400 min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Toggle menu"
+              aria-expanded={open}
+              aria-controls="mobile-nav"
             >
               {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -90,8 +92,12 @@ export function NavBar() {
       {/* Mobile dropdown */}
       {open && (
         <>
-          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
-          <div className="lg:hidden bg-secondary-900 border-t border-secondary-700/50 relative z-50">
+          <div
+            className="fixed inset-0 z-40 bg-black/40"
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
+          />
+          <div id="mobile-nav" className="lg:hidden bg-secondary-900 border-t border-secondary-700/50 relative z-50">
             <nav className="max-w-7xl mx-auto px-4 py-3 flex flex-col space-y-1">
               {navLinks.map((link) => (
                 <Link
