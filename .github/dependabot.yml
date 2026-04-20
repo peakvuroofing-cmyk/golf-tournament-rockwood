@@ -7,11 +7,16 @@ updates:
       day: monday
     open-pull-requests-limit: 5
     groups:
-      # Batch minor/patch bumps into one PR per ecosystem to cut review noise.
       minor-and-patch:
         update-types: [minor, patch]
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: monthly
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
