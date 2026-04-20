@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "eslint": "^8.50.0",
-    "eslint-config-next": "14.0.0",
+    "eslint-config-next": "16.2.4",
     "jimp": "^1.6.1",
     "netlify-cli": "^25.0.1"
   }
